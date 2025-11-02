@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centre Carrefour Béthanie - Accueil</title>
+    <title>Centre Carrefour Béthanie - Tourisme</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="image/bethanie logo.webp">
     <style>
@@ -72,7 +72,6 @@
             margin-right: 15px;
         }
 
-        /* Navigation */
         .nav-links {
             display: flex;
             list-style: none;
@@ -127,165 +126,121 @@
             box-shadow: 0 2px 8px rgba(78, 151, 122, 0.3);
         }
 
-        .mobile-menu-btn:hover {
-            background: linear-gradient(135deg, #418B7E, #3A7A6E);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(78, 151, 122, 0.4);
-        }
-
         /* Main Content */
         main {
             margin-top: 120px;
             min-height: calc(100vh - 200px);
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            padding: 0;
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .hero-image-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .hero-banner {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(6, 34, 35, 0.7) 0%, rgba(78, 151, 122, 0.6) 100%);
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
-        .hero-content h1 {
-            color: #F7F4D1;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(6, 34, 35, 0.5);
-        }
-
-        .hero-content p {
-            color: #F7F4D1;
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(6, 34, 35, 0.5);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #4E977A;
-            color: #F7F4D1;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(6, 34, 35, 0.3);
-        }
-
-        .cta-button:hover {
-            background: #418B7E;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(6, 34, 35, 0.4);
-        }
-
-        /* Image Container */
-        .image-container {
-            max-width: 800px;
-            margin: 3rem auto;
-            padding: 2rem;
-            background: var(--white);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .image-container h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-        }
-
-        .region-image-real {
-            width: 100%;
-            height: 400px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .region-image-real img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-
-        /* Card */
-        .card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            margin: 2rem 0;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 25px rgba(6, 34, 35, 0.15);
-        }
-
-        .card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        /* Logos Section */
-        .logos-section {
-            text-align: center;
-            margin: 3rem 0;
             padding: 2rem 0;
         }
 
-        .logos-section p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: var(--dark-gray);
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .logos-section img {
-            margin: 0 10px;
-            border-radius: 10px;
-            vertical-align: middle;
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tourism Cards */
+        .tourism-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tourism-card {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            min-height: 200px;
+        }
+
+        .tourism-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(6, 34, 35, 0.15);
+        }
+
+        .tourism-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .tourism-image {
+            width: 300px;
+            height: 200px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tourism-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .tourism-card:hover .tourism-image img {
+            transform: scale(1.05);
+        }
+
+        .tourism-content {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .tourism-content h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tourism-content h3 i {
+            font-size: 1.5rem;
+        }
+
+        .tourism-content h3 a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .tourism-content h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .tourism-content p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .tourism-content a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .tourism-content a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
         }
 
         /* Footer */
@@ -326,7 +281,7 @@
             color: #A8B5A8;
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 1024px) {
             .nav-links {
                 gap: 0.5rem;
@@ -375,20 +330,8 @@
                 margin-top: 100px;
             }
 
-            .hero {
-                min-height: 400px;
-            }
-
-            .hero-content h1 {
+            .page-header h1 {
                 font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-
-            .hero-content {
-                padding: 3rem 1rem;
             }
 
             .logo {
@@ -404,12 +347,29 @@
                 text-align: center;
             }
 
-            .logos-section img {
-                margin: 10px 5px;
+            .tourism-card {
+                flex-direction: column !important;
+                min-height: auto;
+            }
+
+            .tourism-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .tourism-content {
+                padding: 1.5rem;
+            }
+
+            .tourism-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .tourism-content p {
+                font-size: 1rem;
             }
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -422,8 +382,28 @@
             }
         }
 
-        .card {
+        .tourism-card {
             animation: fadeIn 0.6s ease;
+        }
+
+        .tourism-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .tourism-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .tourism-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .tourism-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .tourism-card:nth-child(5) {
+            animation-delay: 0.5s;
         }
     </style>
 </head>
@@ -437,9 +417,9 @@
                 Centre Carrefour Béthanie
             </div>
             <ul class="nav-links">
-                <li><a href="accueil.html" class="active">Accueil</a></li>
+                <li><a href="index.html">Accueil</a></li>
                 <li><a href="batiment.html">Bâtiment</a></li>
-                <li><a href="tourisme.html">Tourisme</a></li>
+                <li><a href="tourisme.html" class="active">Tourisme</a></li>
                 <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
                 <li><a href="tarifs.html">Tarifs</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -452,64 +432,127 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-image-container">
-                <img src="image/Bethanie-1-1024x523-1.webp" alt="Centre Carrefour Béthanie" class="hero-banner">
-                <div class="hero-overlay"></div>
-            </div>
-            <div class="container hero-content">
-                <h1>Bienvenue au Centre Carrefour Béthanie</h1>
-                <p>Un lieu d'accueil, de partage et de convivialité dans le Gard</p>
-                <a href="qui-sommes-nous.html" class="cta-button">Découvrir notre histoire</a>
-            </div>
-        </section>
-
         <div class="container">
-            <!-- Image de la région -->
-            <div class="image-container">
-                <h2>Notre Belle Région</h2>
-                <div class="region-image-real">
-                    <img src="image/Gard_Position.png" alt="Position du Gard">
+            <div class="page-header">
+                <h1>Découvrir le Gard</h1>
+                <p>Un patrimoine riche entre histoire, nature et traditions</p>
+            </div>
+
+            <!-- Attractions touristiques -->
+            <div class="tourism-cards">
+                <!-- Pont du Gard -->
+                <div class="tourism-card">
+                    <div class="tourism-image">
+                        <img src="image/pont-du-gard.jpg" alt="Pont du Gard">
+                    </div>
+                    <div class="tourism-content">
+                        <h3>
+                            <i class="fas fa-monument"></i>
+                            <a href="https://pontdugard.fr/fr" target="_blank" rel="noopener noreferrer">
+                                Pont du Gard
+                            </a>
+                        </h3>
+                        <p>Le Site du Pont du Gard est ouvert au public toute l'année. Il est accessible 7 jours sur 7
+                            avec des horaires variables en fonction des saisons. Le Musée est fermé pour maintenance
+                            tous les lundis matin.</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Présentation -->
-            <div class="card">
-                <h3>Locations pour groupes, dans le Gard sur la commune de Bagard</h3>
-                <p>
-                    Le Centre Carrefour Béthanie est un lieu d'accueil idéal !
-                    <br><br>
+                <!-- Bambouseraie -->
+                <div class="tourism-card">
+                    <div class="tourism-image">
+                        <img src="image/bambouseraie.jpg" alt="Bambouseraie">
+                    </div>
+                    <div class="tourism-content">
+                        <h3>
+                            <i class="fa-solid fa-tree"></i>
+                            <a href="https://bambouseraie.fr" target="_blank" rel="noopener noreferrer">
+                                LA BAMBOUSERAIE
+                            </a>
+                        </h3>
+                        <p>
+                            À seulement 5 minutes d'Anduze, la Bambouseraie vous accueille dans un espace hors du temps,
+                            à découvrir, ou redécouvrir.
+                            <br>
+                            552 RUE DE MONTSAUVE
+                            <br>
+                            30140 GÉNÉRARGUES – FRANCE
+                            <br>
+                            TÉL : 04 66 61 70 47
+                            <br>
+                            E-MAIL : BAMBOU@BAMBOUSERAIE.FR
+                        </p>
+                    </div>
+                </div>
 
-                    Séjours de vacances, rassemblements familiaux et associatifs, classes de découverte, séjours
-                    à thème…. Ce centre est particulièrement bien équipé pour l'accueil de groupes et des camps
-                    de jeunes et d'enfants. Il peut aussi accueillir des groupes en séminaires de formation.
-                    <br><br>
+                <!-- Train à Vapeur -->
+                <div class="tourism-card">
+                    <div class="tourism-image">
+                        <img src="image/train anduze.webp" alt="Train à Vapeur">
+                    </div>
+                    <div class="tourism-content">
+                        <h3>
+                            <i class="fa-solid fa-train"></i>
+                            <a href="https://www.trainavapeur.com" target="_blank" rel="noopener noreferrer">
+                                Train à Vapeur des Cévennes
+                            </a>
+                        </h3>
+                        <p>
+                            OUVERTURE
+                            <br>
+                            Du 10/04/2022 au 31/10/2022
+                            <br><br>
+                            38 Place de la Gare 30140 ANDUZE
+                            <br>
+                            TEL : 04 66 60 59 00
+                        </p>
+                    </div>
+                </div>
 
-                    La capacité d'hébergement totale est de 50 places réparties sur plusieurs bâtiments pouvant
-                    être loués ensemble ou séparément. Des lits d'appoint peuvent être rajoutés dans certaines
-                    chambres. Le centre dispose de chapiteaux permettant en été d'augmenter la capacité
-                    d'hébergement. Le centre n'assure pas de service de restauration, mais peut mettre les
-                    groupes en contact avec des entrepreneurs individuels qui pourront assurer ce service selon
-                    leurs besoins.
-                    <br>
-                    Les lieux sont mis à disposition en autogestion.
-                    <br><br>
+                <!-- Observatoire Mont Aigoual -->
+                <div class="tourism-card">
+                    <div class="tourism-image">
+                        <img src="image/observatoir mt egoale.jpg" alt="Observatoire Mont Aigoual">
+                    </div>
+                    <div class="tourism-content">
+                        <h3>
+                            <a href="https://climatographe.fr" target="_blank" rel="noopener noreferrer">
+                                Observatoire météo du Mont Aigoual
+                            </a>
+                        </h3>
+                        <p>
+                            Météosite Mont Aigoual
+                            <br>
+                            30570 Valleraugue
+                            <br><br>
+                            TEL : 04 67 42 59 83 / 04 30 05 16 80
+                            <br>
+                            Télécopieur : 04 67 82 65 05
+                            <br><br>
+                            Courriel : meteosite@aigoual.fr / aigoual@meteo.fr
+                        </p>
+                    </div>
+                </div>
 
-                    Le centre Carrefour Béthanie est situé dans le Gard sur la commune de Bagard, en bordure des
-                    Cévennes, à 9km d'Alès et 6 km d'Anduze, dans un parc arboré d'un hectare, avec des terrains
-                    de jeux et une piscine. Il est situé à quelques minutes du Gardon et de ses fraîches
-                    baignades, des vallées cévenoles et ses souvenirs historiques.
-                </p>
-            </div>
-
-            <!-- Logos -->
-            <div class="logos-section">
-                <p>Pour une date, un devis, voir la page contact</p>
-                <img src="image/logo-wifi-gratuit.png" alt="WiFi gratuit" style="width: 5%; height: auto;">
-                <img src="image/handicape logo.png" alt="Accessible PMR" style="width: 5%; height: auto;">
-                <img src="image/FPF.png" alt="FPF" style="width: 13%; height: auto;">
-                <img src="image/Logo---CCV.jpg" alt="CCV" style="width: 20%; height: auto;">
+                <!-- Grottes -->
+                <div class="tourism-card">
+                    <div class="tourism-image">
+                        <img src="image/grotte.jpg" alt="Grottes des environs">
+                    </div>
+                    <div class="tourism-content">
+                        <h3><i class="fas fa-mountain"></i> Les grottes des environs</h3>
+                        <p>
+                            <a href="https://www.demoiselles.com/fr" target="_blank" rel="noopener noreferrer">La grotte
+                                des demoiselles</a><br>
+                            <a href="https://www.grotte-cocaliere.com" target="_blank" rel="noopener noreferrer">Grotte
+                                La Cocalière</a><br>
+                            <a href="https://grotte-de-trabuc.com" target="_blank" rel="noopener noreferrer">Grotte de
+                                Trabuc</a><br>
+                            <a href="https://www.grottedelasalamandre.com/fr" target="_blank"
+                                rel="noopener noreferrer">Grotte de la Salamandre</a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -526,7 +569,7 @@
 
                 <div class="footer-section">
                     <h3>Liens Rapides</h3>
-                    <a href="accueil.html">Accueil</a><br>
+                    <a href="index.html">Accueil</a><br>
                     <a href="batiment.html">Nos bâtiments</a><br>
                     <a href="qui-sommes-nous.html">Qui sommes-nous</a><br>
                     <a href="tarifs.html">Nos tarifs</a><br>

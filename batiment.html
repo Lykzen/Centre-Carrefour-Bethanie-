@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre Carrefour Béthanie - Nos Bâtiments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="image/bethanie logo.webp">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #4E977A;
+            --secondary-color: #418B7E;
+            --light-gray: #F7F4D1;
+            --dark-gray: #062223;
+            --white: #F7F4D1;
+            --border-color: #7AB37C;
+            --shadow: 0 2px 10px rgba(6, 34, 35, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: #7AB37C;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #F7F4D1;
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo img {
+            width: 15%;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            background: #F7F4D1;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(6, 34, 35, 0.08);
+            min-height: 50px;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-color), #418B7E);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(78, 151, 122, 0.3);
+        }
+
+        .nav-links a.active {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-color), #3A7A6E);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(78, 151, 122, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: linear-gradient(135deg, var(--primary-color), #418B7E);
+            border: none;
+            font-size: 1.8rem;
+            color: var(--white);
+            cursor: pointer;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(78, 151, 122, 0.3);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 120px;
+            min-height: calc(100vh - 200px);
+            padding: 2rem 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Building Grid */
+        .buildings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        /* Building Cards */
+        .building-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .building-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(6, 34, 35, 0.2);
+        }
+
+        .building-carousel {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(247, 244, 209, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background: var(--white);
+        }
+
+        .building-info {
+            padding: 1.5rem;
+        }
+
+        .building-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .building-info h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .building-info p {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(6, 34, 35, 0.9);
+        }
+
+        .image-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(6, 34, 35, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: rgba(6, 34, 35, 0.8);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(6, 34, 35, 0.5);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .modal-nav:hover {
+            background: rgba(6, 34, 35, 0.8);
+        }
+
+        .modal-prev {
+            left: -80px;
+        }
+
+        .modal-next {
+            right: -80px;
+        }
+
+        .modal-info {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        /* Boutons tactiles pour mobile */
+        .modal-touch-nav {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10001;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .touch-nav-btn {
+            width: 60px;
+            height: 60px;
+            background: rgba(78, 151, 122, 0.9);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(6, 34, 35, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .touch-nav-btn:active {
+            background: rgba(65, 139, 126, 0.95);
+            transform: scale(0.95);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #A8B5A8;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #2A4F4B;
+            color: #A8B5A8;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .modal-prev,
+            .modal-next {
+                display: none !important;
+            }
+
+            .modal-touch-nav {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                justify-content: flex-start;
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                padding: 1rem 0;
+            }
+
+            main {
+                margin-top: 100px;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .buildings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .logo img {
+                width: 20%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .modal-close {
+                top: -40px;
+                width: 50px;
+                height: 50px;
+                font-size: 2.5rem;
+            }
+
+            .modal-info {
+                bottom: -50px;
+                font-size: 1rem;
+            }
+
+            .touch-nav-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.8rem;
+            }
+
+            .modal-touch-nav {
+                bottom: 80px;
+                gap: 30px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .building-card {
+            animation: fadeIn 0.6s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="image/bethanie logo.webp" alt="logo">
+                Centre Carrefour Béthanie
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="batiment.html" class="active">Bâtiment</a></li>
+                <li><a href="tourisme.html">Tourisme</a></li>
+                <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+                <li><a href="tarifs.html">Tarifs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>Nos Locaux</h1>
+                <p>Des espaces modernes et accueillants au service de la communauté</p>
+            </div>
+
+            <div class="buildings-grid">
+                <!-- Les Amandiers -->
+                <div class="building-card">
+                    <div class="building-carousel" data-building="1">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_1.jpg"
+                                    alt="Les Amandiers"></div>
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_2.jpg"
+                                    alt="Les Amandiers"></div>
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_3.jpg"
+                                    alt="Les Amandiers"></div>
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_4.jpg"
+                                    alt="Les Amandiers"></div>
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_5.jpg"
+                                    alt="Les Amandiers"></div>
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_6.jpg"
+                                    alt="Les Amandiers"></div>
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_7.jpg"
+                                    alt="Les Amandiers"></div>
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_8.jpg"
+                                    alt="Les Amandiers"></div>
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_9.jpg"
+                                    alt="Les Amandiers"></div>
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_10.jpg"
+                                    alt="Les Amandiers"></div>
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_11.jpg"
+                                    alt="Les Amandiers"></div>
+                            <div class="carousel-slide"><img src="image/les amandiers/les amandier_12.jpg"
+                                    alt="Les Amandiers"></div>
+                        </div>
+                        <div class="carousel-nav">
+                            <div class="carousel-dot active" data-slide="0"></div>
+                            <div class="carousel-dot" data-slide="1"></div>
+                            <div class="carousel-dot" data-slide="2"></div>
+                            <div class="carousel-dot" data-slide="3"></div>
+                            <div class="carousel-dot" data-slide="4"></div>
+                            <div class="carousel-dot" data-slide="5"></div>
+                            <div class="carousel-dot" data-slide="6"></div>
+                            <div class="carousel-dot" data-slide="7"></div>
+                            <div class="carousel-dot" data-slide="8"></div>
+                            <div class="carousel-dot" data-slide="9"></div>
+                            <div class="carousel-dot" data-slide="10"></div>
+                            <div class="carousel-dot" data-slide="11"></div>
+                        </div>
+                    </div>
+                    <div class="building-info">
+                        <h3>Les Amandiers</h3>
+                        <h4>Maxi 23 couchages</h4>
+                        <p>Les Amandiers est le bâtiment le plus important du centre et peut héberger 24 personnes en
+                            lits individuels. Il se compose au rez-de-chaussée d'une grande salle de 60 m², avec salon
+                            attenant (25 m²), d'une salle de réunion de 30 m², d'une grande cuisine moderne entièrement
+                            équipée et de toilettes ; Au second étage, de 6 chambres de 2 à 7 lits, d'une petite pièce
+                            de stockage, ainsi qu'une salle de bain collective équipée de 3 douches fermées, 3
+                            toilettes, et 3 lavabos et placard pour le rangement des produits d'entretien</p>
+                    </div>
+                </div>
+
+                <!-- Les Tilleuls -->
+                <div class="building-card">
+                    <div class="building-carousel" data-building="2">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_1.jpg"
+                                    alt="Les Tilleuls"></div>
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_2.jpg"
+                                    alt="Les Tilleuls"></div>
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_3.jpg"
+                                    alt="Les Tilleuls"></div>
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_4.jpg"
+                                    alt="Les Tilleuls"></div>
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_5.jpg"
+                                    alt="Les Tilleuls"></div>
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_6.jpg"
+                                    alt="Les Tilleuls"></div>
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_7.jpg"
+                                    alt="Les Tilleuls"></div>
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_8.jpg"
+                                    alt="Les Tilleuls"></div>
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_9.jpg"
+                                    alt="Les Tilleuls"></div>
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_10.jpg"
+                                    alt="Les Tilleuls"></div>
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_11.jpg"
+                                    alt="Les Tilleuls"></div>
+                            <div class="carousel-slide"><img src="image/les tilleuls/les tilleuls_12.jpg"
+                                    alt="Les Tilleuls"></div>
+                        </div>
+                        <div class="carousel-nav">
+                            <div class="carousel-dot active" data-slide="0"></div>
+                            <div class="carousel-dot" data-slide="1"></div>
+                            <div class="carousel-dot" data-slide="2"></div>
+                            <div class="carousel-dot" data-slide="3"></div>
+                            <div class="carousel-dot" data-slide="4"></div>
+                            <div class="carousel-dot" data-slide="5"></div>
+                            <div class="carousel-dot" data-slide="6"></div>
+                            <div class="carousel-dot" data-slide="7"></div>
+                            <div class="carousel-dot" data-slide="8"></div>
+                            <div class="carousel-dot" data-slide="9"></div>
+                            <div class="carousel-dot" data-slide="10"></div>
+                            <div class="carousel-dot" data-slide="11"></div>
+                        </div>
+                    </div>
+                    <div class="building-info">
+                        <h3>Les Tilleuls</h3>
+                        <h4>Maxi 12 couchages</h4>
+                        <p>Ce bâtiment est le plus récent des gîtes du Centre Carrefour Béthanie. Il peut héberger 12
+                            personnes et se compose de 3 chambres indépendantes, chacune avec sa salle de bain
+                            individuelle. Il dispose d'une cuisine équipée ouverte sur une salle de réunion permettant
+                            de recevoir une vingtaine de personnes. Le bâtiment est accessible aux personnes à mobilité
+                            réduite.</p>
+                    </div>
+                </div>
+
+                <!-- Les Lauriers -->
+                <div class="building-card">
+                    <div class="building-carousel" data-building="3">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="image/les lauriers/les lauriers_1.jpg"
+                                    alt="Les Lauriers"></div>
+                            <div class="carousel-slide"><img src="image/les lauriers/les lauriers_2.jpg"
+                                    alt="Les Lauriers"></div>
+                            <div class="carousel-slide"><img src="image/les lauriers/les lauriers_3.jpg"
+                                    alt="Les Lauriers"></div>
+                            <div class="carousel-slide"><img src="image/les lauriers/les lauriers_4.jpg"
+                                    alt="Les Lauriers"></div>
+                            <div class="carousel-slide"><img src="image/les lauriers/les lauriers_5.jpg"
+                                    alt="Les Lauriers"></div>
+                            <div class="carousel-slide"><img src="image/les lauriers/les lauriers_6.jpg"
+                                    alt="Les Lauriers"></div>
+                            <div class="carousel-slide"><img src="image/les lauriers/les lauriers_7.jpg"
+                                    alt="Les Lauriers"></div>
+                        </div>
+                        <div class="carousel-nav">
+                            <div class="carousel-dot active" data-slide="0"></div>
+                            <div class="carousel-dot" data-slide="1"></div>
+                            <div class="carousel-dot" data-slide="2"></div>
+                            <div class="carousel-dot" data-slide="3"></div>
+                            <div class="carousel-dot" data-slide="4"></div>
+                            <div class="carousel-dot" data-slide="5"></div>
+                            <div class="carousel-dot" data-slide="6"></div>
+                        </div>
+                    </div>
+                    <div class="building-info">
+                        <h3>Les Lauriers</h3>
+                        <h4>Maxi 12 couchages</h4>
+                        <p>Le bâtiment « Les Lauriers » est exclusivement destiné au couchage, et se compose de 3
+                            chambres indépendantes, chacune avec sa salle de bain-toilettes individuelle, de 2 à 6 lits
+                            chacune. Il peut servir d'annexe au bâtiment des Amandiers ou au bâtiment les Tilleuls. Une
+                            chambre est équipée pour recevoir des personnes à mobilité réduite.</p>
+                    </div>
+                </div>
+
+                <!-- Les Oliviers -->
+                <div class="building-card">
+                    <div class="building-carousel" data-building="4">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="image/les oliviers/les oliviers_1.jpg"
+                                    alt="Les Oliviers"></div>
+                            <div class="carousel-slide"><img src="image/les oliviers/les oliviers_2.jpg"
+                                    alt="Les Oliviers"></div>
+                            <div class="carousel-slide"><img src="image/les oliviers/les oliviers_3.jpg"
+                                    alt="Les Oliviers"></div>
+                            <div class="carousel-slide"><img src="image/les oliviers/les oliviers_4.jpg"
+                                    alt="Les Oliviers"></div>
+                            <div class="carousel-slide"><img src="image/les oliviers/les oliviers_5.jpg"
+                                    alt="Les Oliviers"></div>
+                            <div class="carousel-slide"><img src="image/les oliviers/les oliviers_6.jpg"
+                                    alt="Les Oliviers"></div>
+                            <div class="carousel-slide"><img src="image/les oliviers/les oliviers_7.jpg"
+                                    alt="Les Oliviers"></div>
+                            <div class="carousel-slide"><img src="image/les oliviers/les oliviers_8.jpg"
+                                    alt="Les Oliviers"></div>
+                        </div>
+                        <div class="carousel-nav">
+                            <div class="carousel-dot active" data-slide="0"></div>
+                            <div class="carousel-dot" data-slide="1"></div>
+                            <div class="carousel-dot" data-slide="2"></div>
+                            <div class="carousel-dot" data-slide="3"></div>
+                            <div class="carousel-dot" data-slide="4"></div>
+                            <div class="carousel-dot" data-slide="5"></div>
+                            <div class="carousel-dot" data-slide="6"></div>
+                            <div class="carousel-dot" data-slide="7"></div>
+                        </div>
+                    </div>
+                    <div class="building-info">
+                        <h3>Les Oliviers</h3>
+                        <h4>Maxi 60 personnes</h4>
+                        <p>Hébergement supplémentaire saisonnier avec 15 places. Parfait pour les camps d'été et séjours
+                            de jeunes en pleine nature.</p>
+                    </div>
+                </div>
+
+                <!-- Les Roses -->
+                <div class="building-card">
+                    <div class="building-carousel" data-building="5">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="image/les roses/les roses_1.jpg" alt="Les Roses">
+                            </div>
+                            <div class="carousel-slide"><img src="image/les roses/les roses_2.jpg" alt="Les Roses">
+                            </div>
+                            <div class="carousel-slide"><img src="image/les roses/les roses_3.jpg" alt="Les Roses">
+                            </div>
+                            <div class="carousel-slide"><img src="image/les roses/les roses_4.jpg" alt="Les Roses">
+                            </div>
+                            <div class="carousel-slide"><img src="image/les roses/les roses_5.jpg" alt="Les Roses">
+                            </div>
+                            <div class="carousel-slide"><img src="image/les roses/les roses_6.jpg" alt="Les Roses">
+                            </div>
+                            <div class="carousel-slide"><img src="image/les roses/les roses_7.jpg" alt="Les Roses">
+                            </div>
+                            <div class="carousel-slide"><img src="image/les roses/les roses_8.jpg" alt="Les Roses">
+                            </div>
+                        </div>
+                        <div class="carousel-nav">
+                            <div class="carousel-dot active" data-slide="0"></div>
+                            <div class="carousel-dot" data-slide="1"></div>
+                            <div class="carousel-dot" data-slide="2"></div>
+                            <div class="carousel-dot" data-slide="3"></div>
+                            <div class="carousel-dot" data-slide="4"></div>
+                            <div class="carousel-dot" data-slide="5"></div>
+                            <div class="carousel-dot" data-slide="6"></div>
+                            <div class="carousel-dot" data-slide="7"></div>
+                        </div>
+                    </div>
+                    <div class="building-info">
+                        <h3>Les Roses</h3>
+                        <h4>3 à 4 personnes</h4>
+                        <p>Constitué d'une grande chambre avec lit double, avec sa salle de bain et sa cuisine, ce
+                            bâtiment peut recevoir une famille avec un ou deux enfants.</p>
+                    </div>
+                </div>
+
+                <!-- Logement d'appoint -->
+                <div class="building-card">
+                    <div class="building-carousel" data-building="6">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="image/logement d'appoint/logement_1.jpg"
+                                    alt="Logement d'appoint"></div>
+                        </div>
+                        <div class="carousel-nav">
+                            <div class="carousel-dot active" data-slide="0"></div>
+                        </div>
+                    </div>
+                    <div class="building-info">
+                        <h3>Logement d'appoint</h3>
+                        <h4>Maxi 32 couchages</h4>
+                        <p>En été, ces logements offrent une capacité d'hébergement supplémentaire en tentes marabouts
+                            équipées de 32 couchettes montées sur sol en dur, un ensemble de douches et toilettes WC est
+                            situé à proximité.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Centre Carrefour Béthanie</h3>
+                    <p>Une communauté engagée au service de tous depuis 1891. Venez nous rencontrer et découvrir nos
+                        activités.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Liens Rapides</h3>
+                    <a href="index.html">Accueil</a><br>
+                    <a href="batiment.html">Nos bâtiments</a><br>
+                    <a href="qui-sommes-nous.html">Qui sommes-nous</a><br>
+                    <a href="tarifs.html">Nos tarifs</a><br>
+                    <a href="contact.html">Contact</a><br>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Informations Pratiques</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 1538 route du Mas Miger<br>30140 Bagard</p>
+                    <p><i class="fas fa-phone"></i> 04 66 60 71 74</p>
+                    <p><i class="fas fa-mobile-alt"></i> 06 59 89 23 45</p>
+                    <p><i class="fas fa-envelope"></i> carrefour.bethanie@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Lun-Ven: 9h-17h</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Centre Carrefour Béthanie. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal pour les images -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <button class="modal-nav modal-prev">&#10094;</button>
+            <img class="modal-image" src="" alt="">
+            <button class="modal-nav modal-next">&#10095;</button>
+            <div class="modal-info"></div>
+
+            <!-- Boutons tactiles pour mobile/tablette -->
+            <div class="modal-touch-nav">
+                <button class="touch-nav-btn touch-prev">&#10094;</button>
+                <button class="touch-nav-btn touch-next">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const modal = document.getElementById('imageModal');
+            const modalImg = modal.querySelector('.modal-image');
+            const modalClose = modal.querySelector('.modal-close');
+            const modalPrev = modal.querySelector('.modal-prev');
+            const modalNext = modal.querySelector('.modal-next');
+            const modalInfo = modal.querySelector('.modal-info');
+            const touchPrev = modal.querySelector('.touch-prev');
+            const touchNext = modal.querySelector('.touch-next');
+
+            let currentBuilding = null;
+            let currentSlideIndex = 0;
+
+            // Données des bâtiments
+            const buildings = {
+                '1': {
+                    name: 'Les Amandiers',
+                    images: [
+                        { src: 'image/les amandiers/les amandier_1.jpg', alt: 'Les Amandiers' },
+                        { src: 'image/les amandiers/les amandier_2.jpg', alt: 'Les Amandiers' },
+                        { src: 'image/les amandiers/les amandier_3.jpg', alt: 'Les Amandiers' },
+                        { src: 'image/les amandiers/les amandier_4.jpg', alt: 'Les Amandiers' },
+                        { src: 'image/les amandiers/les amandier_5.jpg', alt: 'Les Amandiers' },
+                        { src: 'image/les amandiers/les amandier_6.jpg', alt: 'Les Amandiers' },
+                        { src: 'image/les amandiers/les amandier_7.jpg', alt: 'Les Amandiers' },
+                        { src: 'image/les amandiers/les amandier_8.jpg', alt: 'Les Amandiers' },
+                        { src: 'image/les amandiers/les amandier_9.jpg', alt: 'Les Amandiers' },
+                        { src: 'image/les amandiers/les amandier_10.jpg', alt: 'Les Amandiers' },
+                        { src: 'image/les amandiers/les amandier_11.jpg', alt: 'Les Amandiers' },
+                        { src: 'image/les amandiers/les amandier_12.jpg', alt: 'Les Amandiers' }
+                    ]
+                },
+                '2': {
+                    name: 'Les Tilleuls',
+                    images: [
+                        { src: 'image/les tilleuls/les tilleuls_1.jpg', alt: 'Les Tilleuls' },
+                        { src: 'image/les tilleuls/les tilleuls_2.jpg', alt: 'Les Tilleuls' },
+                        { src: 'image/les tilleuls/les tilleuls_3.jpg', alt: 'Les Tilleuls' },
+                        { src: 'image/les tilleuls/les tilleuls_4.jpg', alt: 'Les Tilleuls' },
+                        { src: 'image/les tilleuls/les tilleuls_5.jpg', alt: 'Les Tilleuls' },
+                        { src: 'image/les tilleuls/les tilleuls_6.jpg', alt: 'Les Tilleuls' },
+                        { src: 'image/les tilleuls/les tilleuls_7.jpg', alt: 'Les Tilleuls' },
+                        { src: 'image/les tilleuls/les tilleuls_8.jpg', alt: 'Les Tilleuls' },
+                        { src: 'image/les tilleuls/les tilleuls_9.jpg', alt: 'Les Tilleuls' },
+                        { src: 'image/les tilleuls/les tilleuls_10.jpg', alt: 'Les Tilleuls' },
+                        { src: 'image/les tilleuls/les tilleuls_11.jpg', alt: 'Les Tilleuls' },
+                        { src: 'image/les tilleuls/les tilleuls_12.jpg', alt: 'Les Tilleuls' }
+                    ]
+                },
+                '3': {
+                    name: 'Les Lauriers',
+                    images: [
+                        { src: 'image/les lauriers/les lauriers_1.jpg', alt: 'Les Lauriers' },
+                        { src: 'image/les lauriers/les lauriers_2.jpg', alt: 'Les Lauriers' },
+                        { src: 'image/les lauriers/les lauriers_3.jpg', alt: 'Les Lauriers' },
+                        { src: 'image/les lauriers/les lauriers_4.jpg', alt: 'Les Lauriers' },
+                        { src: 'image/les lauriers/les lauriers_5.jpg', alt: 'Les Lauriers' },
+                        { src: 'image/les lauriers/les lauriers_6.jpg', alt: 'Les Lauriers' },
+                        { src: 'image/les lauriers/les lauriers_7.jpg', alt: 'Les Lauriers' }
+                    ]
+                },
+                '4': {
+                    name: 'Les Oliviers',
+                    images: [
+                        { src: 'image/les oliviers/les oliviers_1.jpg', alt: 'Les Oliviers' },
+                        { src: 'image/les oliviers/les oliviers_2.jpg', alt: 'Les Oliviers' },
+                        { src: 'image/les oliviers/les oliviers_3.jpg', alt: 'Les Oliviers' },
+                        { src: 'image/les oliviers/les oliviers_4.jpg', alt: 'Les Oliviers' },
+                        { src: 'image/les oliviers/les oliviers_5.jpg', alt: 'Les Oliviers' },
+                        { src: 'image/les oliviers/les oliviers_6.jpg', alt: 'Les Oliviers' },
+                        { src: 'image/les oliviers/les oliviers_7.jpg', alt: 'Les Oliviers' },
+                        { src: 'image/les oliviers/les oliviers_8.jpg', alt: 'Les Oliviers' }
+                    ]
+                },
+                '5': {
+                    name: 'Les Roses',
+                    images: [
+                        { src: 'image/les roses/les roses_1.jpg', alt: 'Les Roses' },
+                        { src: 'image/les roses/les roses_2.jpg', alt: 'Les Roses' },
+                        { src: 'image/les roses/les roses_3.jpg', alt: 'Les Roses' },
+                        { src: 'image/les roses/les roses_4.jpg', alt: 'Les Roses' },
+                        { src: 'image/les roses/les roses_5.jpg', alt: 'Les Roses' },
+                        { src: 'image/les roses/les roses_6.jpg', alt: 'Les Roses' },
+                        { src: 'image/les roses/les roses_7.jpg', alt: 'Les Roses' },
+                        { src: 'image/les roses/les roses_8.jpg', alt: 'Les Roses' }
+                    ]
+                },
+                '6': {
+                    name: 'Logement d\'appoint',
+                    images: [
+                        { src: 'image/logement d\'appoint/logement_1.jpg', alt: 'Logement d\'appoint' }
+                    ]
+                }
+            };
+
+            // Menu mobile
+            mobileMenuBtn.addEventListener('click', function () {
+                navLinksContainer.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('nav')) {
+                    navLinksContainer.classList.remove('active');
+                }
+            });
+
+            // Fonctions modal
+            function openModal(buildingId, slideIndex) {
+                currentBuilding = buildingId;
+                currentSlideIndex = slideIndex;
+                const building = buildings[buildingId];
+                const image = building.images[slideIndex];
+
+                modalImg.src = image.src;
+                modalImg.alt = image.alt;
+                modalInfo.textContent = `${building.name} - ${slideIndex + 1}/${building.images.length}`;
+
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+
+            function showNextImage() {
+                const building = buildings[currentBuilding];
+                currentSlideIndex = (currentSlideIndex + 1) % building.images.length;
+                const image = building.images[currentSlideIndex];
+
+                modalImg.src = image.src;
+                modalImg.alt = image.alt;
+                modalInfo.textContent = `${building.name} - ${currentSlideIndex + 1}/${building.images.length}`;
+            }
+
+            function showPrevImage() {
+                const building = buildings[currentBuilding];
+                currentSlideIndex = currentSlideIndex === 0 ? building.images.length - 1 : currentSlideIndex - 1;
+                const image = building.images[currentSlideIndex];
+
+                modalImg.src = image.src;
+                modalImg.alt = image.alt;
+                modalInfo.textContent = `${building.name} - ${currentSlideIndex + 1}/${building.images.length}`;
+            }
+
+            // Événements modal
+            modalClose.addEventListener('click', closeModal);
+            modalNext.addEventListener('click', showNextImage);
+            modalPrev.addEventListener('click', showPrevImage);
+            touchPrev.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showPrevImage();
+            });
+            touchNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showNextImage();
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('show')) return;
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') showPrevImage();
+                if (e.key === 'ArrowRight') showNextImage();
+            });
+
+            // Swipe sur modal
+            let modalStartX = 0;
+            let modalStartY = 0;
+            let modalIsSwiping = false;
+
+            modal.addEventListener('touchstart', (e) => {
+                if (!modal.classList.contains('show')) return;
+                if (e.target.classList.contains('touch-nav-btn')) return;
+                modalStartX = e.touches[0].clientX;
+                modalStartY = e.touches[0].clientY;
+                modalIsSwiping = true;
+            }, { passive: true });
+
+            modal.addEventListener('touchmove', (e) => {
+                if (!modalIsSwiping || !modal.classList.contains('show')) return;
+                const diffY = Math.abs(e.touches[0].clientY - modalStartY);
+                const diffX = Math.abs(e.touches[0].clientX - modalStartX);
+                if (diffX > diffY && diffX > 10) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+
+            modal.addEventListener('touchend', (e) => {
+                if (!modalIsSwiping || !modal.classList.contains('show')) return;
+                if (e.target.classList.contains('touch-nav-btn')) return;
+                modalIsSwiping = false;
+
+                const endX = e.changedTouches[0].clientX;
+                const endY = e.changedTouches[0].clientY;
+                const diffX = modalStartX - endX;
+                const diffY = Math.abs(modalStartY - endY);
+                const threshold = 50;
+
+                if (Math.abs(diffX) > threshold && Math.abs(diffX) > diffY) {
+                    if (diffX > 0) {
+                        showNextImage();
+                    } else {
+                        showPrevImage();
+                    }
+                }
+            });
+
+            // Carrousels
+            const carousels = document.querySelectorAll('.building-carousel');
+            carousels.forEach(carousel => {
+                const track = carousel.querySelector('.carousel-track');
+                const dots = carousel.querySelectorAll('.carousel-dot');
+                let currentSlide = 0;
+                let interval;
+
+                function showSlide(index) {
+                    track.style.transform = `translateX(-${index * 100}%)`;
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
+                    currentSlide = index;
+                }
+
+                function nextSlide() {
+                    const nextIndex = (currentSlide + 1) % dots.length;
+                    showSlide(nextIndex);
+                }
+
+                function startAutoplay() {
+                    interval = setInterval(nextSlide, 4000);
+                }
+
+                function stopAutoplay() {
+                    clearInterval(interval);
+                }
+
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        showSlide(index);
+                        stopAutoplay();
+                        startAutoplay();
+                    });
+                });
+
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                slides.forEach((slide, index) => {
+                    slide.addEventListener('click', () => {
+                        const buildingId = carousel.dataset.building;
+                        openModal(buildingId, index);
+                    });
+                });
+
+                startAutoplay();
+                carousel.addEventListener('mouseenter', stopAutoplay);
+                carousel.addEventListener('mouseleave', startAutoplay);
+
+                // Support tactile carrousel
+                let startX = 0;
+                let isDragging = false;
+
+                carousel.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                    stopAutoplay();
+                });
+
+                carousel.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                });
+
+                carousel.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+
+                    const endX = e.changedTouches[0].clientX;
+                    const diffX = startX - endX;
+                    const threshold = 50;
+
+                    if (Math.abs(diffX) > threshold) {
+                        if (diffX > 0 && currentSlide < dots.length - 1) {
+                            showSlide(currentSlide + 1);
+                        } else if (diffX < 0 && currentSlide > 0) {
+                            showSlide(currentSlide - 1);
+                        }
+                    }
+                    startAutoplay();
+                });
+            });
+
+            // Animation de chargement
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

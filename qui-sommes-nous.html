@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centre Carrefour Béthanie - Accueil</title>
+    <title>Centre Carrefour Béthanie - Qui sommes-nous</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="image/bethanie logo.webp">
     <style>
@@ -72,7 +72,6 @@
             margin-right: 15px;
         }
 
-        /* Navigation */
         .nav-links {
             display: flex;
             list-style: none;
@@ -127,165 +126,139 @@
             box-shadow: 0 2px 8px rgba(78, 151, 122, 0.3);
         }
 
-        .mobile-menu-btn:hover {
-            background: linear-gradient(135deg, #418B7E, #3A7A6E);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(78, 151, 122, 0.4);
-        }
-
         /* Main Content */
         main {
             margin-top: 120px;
             min-height: calc(100vh - 200px);
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            padding: 0;
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .hero-image-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .hero-banner {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(6, 34, 35, 0.7) 0%, rgba(78, 151, 122, 0.6) 100%);
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
-        .hero-content h1 {
-            color: #F7F4D1;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(6, 34, 35, 0.5);
-        }
-
-        .hero-content p {
-            color: #F7F4D1;
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(6, 34, 35, 0.5);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #4E977A;
-            color: #F7F4D1;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(6, 34, 35, 0.3);
-        }
-
-        .cta-button:hover {
-            background: #418B7E;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(6, 34, 35, 0.4);
-        }
-
-        /* Image Container */
-        .image-container {
-            max-width: 800px;
-            margin: 3rem auto;
-            padding: 2rem;
-            background: var(--white);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .image-container h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-        }
-
-        .region-image-real {
-            width: 100%;
-            height: 400px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .region-image-real img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-
-        /* Card */
-        .card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            margin: 2rem 0;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 25px rgba(6, 34, 35, 0.15);
-        }
-
-        .card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        /* Logos Section */
-        .logos-section {
-            text-align: center;
-            margin: 3rem 0;
             padding: 2rem 0;
         }
 
-        .logos-section p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: var(--dark-gray);
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .logos-section img {
-            margin: 0 10px;
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* History Section Layout */
+        .history-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        /* Main History Card */
+        .history-main .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .history-main .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(6, 34, 35, 0.15);
+        }
+
+        .history-main .card h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* First Paragraph with Image */
+        .history-first-paragraph {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .history-text-first {
+            flex: 1;
+        }
+
+        .history-text-first p {
+            margin: 0;
+            text-align: justify;
+        }
+
+        .history-first-paragraph img {
+            flex: 0 0 40%;
+            max-width: 40%;
+            height: auto;
             border-radius: 10px;
-            vertical-align: middle;
+            object-fit: cover;
+            margin-top: -70px;
+        }
+
+        /* Rest of History Text */
+        .history-rest p {
+            text-align: justify;
+            margin-bottom: 1rem;
+        }
+
+        /* Sidebar */
+        .sidebar-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: fit-content;
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(6, 34, 35, 0.15);
+        }
+
+        .sidebar-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .sidebar-card h4 {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-image {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-image img {
+            width: 50%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .sidebar-content p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            text-align: justify;
         }
 
         /* Footer */
@@ -326,7 +299,7 @@
             color: #A8B5A8;
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 1024px) {
             .nav-links {
                 gap: 0.5rem;
@@ -375,20 +348,8 @@
                 margin-top: 100px;
             }
 
-            .hero {
-                min-height: 400px;
-            }
-
-            .hero-content h1 {
+            .page-header h1 {
                 font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-
-            .hero-content {
-                padding: 3rem 1rem;
             }
 
             .logo {
@@ -404,12 +365,34 @@
                 text-align: center;
             }
 
-            .logos-section img {
-                margin: 10px 5px;
+            .history-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .history-first-paragraph {
+                flex-direction: column;
+            }
+
+            .history-first-paragraph img {
+                max-width: 100%;
+                flex: 0 0 100%;
+                margin-top: 0;
+            }
+
+            .sidebar-image {
+                justify-content: center;
+            }
+
+            .sidebar-image img {
+                width: 60%;
+            }
+
+            .sidebar-content p {
+                font-size: 0.9rem;
             }
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -422,7 +405,8 @@
             }
         }
 
-        .card {
+        .card,
+        .sidebar-card {
             animation: fadeIn 0.6s ease;
         }
     </style>
@@ -437,10 +421,10 @@
                 Centre Carrefour Béthanie
             </div>
             <ul class="nav-links">
-                <li><a href="accueil.html" class="active">Accueil</a></li>
+                <li><a href="index.html">Accueil</a></li>
                 <li><a href="batiment.html">Bâtiment</a></li>
                 <li><a href="tourisme.html">Tourisme</a></li>
-                <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+                <li><a href="qui-sommes-nous.html" class="active">Qui sommes-nous</a></li>
                 <li><a href="tarifs.html">Tarifs</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -452,64 +436,91 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-image-container">
-                <img src="image/Bethanie-1-1024x523-1.webp" alt="Centre Carrefour Béthanie" class="hero-banner">
-                <div class="hero-overlay"></div>
-            </div>
-            <div class="container hero-content">
-                <h1>Bienvenue au Centre Carrefour Béthanie</h1>
-                <p>Un lieu d'accueil, de partage et de convivialité dans le Gard</p>
-                <a href="qui-sommes-nous.html" class="cta-button">Découvrir notre histoire</a>
-            </div>
-        </section>
-
         <div class="container">
-            <!-- Image de la région -->
-            <div class="image-container">
-                <h2>Notre Belle Région</h2>
-                <div class="region-image-real">
-                    <img src="image/Gard_Position.png" alt="Position du Gard">
+            <div class="page-header">
+                <h1>Qui Sommes-Nous</h1>
+                <p>Une histoire d'engagement et de service depuis plus d'un siècle</p>
+            </div>
+
+            <!-- Histoire et section complémentaire -->
+            <div class="history-section">
+                <div class="history-main">
+                    <div class="card">
+                        <h3>Notre Histoire</h3>
+
+                        <!-- Premier paragraphe avec image -->
+                        <div class="history-first-paragraph">
+                            <div class="history-text-first">
+                                <p>L'ensemble appelé « Béthanie » a été créé à la fin du XIX<sup>e</sup> siècle, en 1891
+                                    par le pasteur Guillaume Granier Soucieux de la mission sociale de l'Eglise, il
+                                    voulut avec son épouse créer "un lieu où chacun pourrait trouver de quoi se
+                                    distraire, se cultiver, s'épanouir". Sans héritiers, ils léguèrent cette propriété à
+                                    la communauté protestante de Bagard et Boisset.</p>
+                            </div>
+                            <img src="image/personnage-dessin-anime-enfant-enfant-colore-fond_884500-18397.jpg"
+                                alt="Personnage historique">
+                        </div>
+
+                        <!-- Paragraphes suivants -->
+                        <div class="history-rest">
+                            <p>Après la guerre de 1914-1918, Béthanie rassemblait la jeunesse des villages de Boisset et
+                                Bagard pour des activités très éclectiques : sport, jeux, formation biblique et
+                                spirituelle, activités culturelles.. Suite à des échanges avec la « Grande Île », il
+                                paraît même qu'à Madagascar on parlait de Béthanie ! Il y avait des conférences et c'est
+                                là qu'ont eu lieu les premières "projections lumineuses" du secteur, ancêtre du cinéma.
+                            </p>
+
+                            <p>Par tradition Béthanie a toujours été un lieu ouvert à tous. En 1942, la meute de
+                                louveteaux était constituée pour moitié des enfants juifs du Foyer Marie Claire de
+                                Boisset, par exemple.</p>
+
+                            <p>C'est dans les années 1970, que le pasteur Gaussorgues a créé une association loi 1901,
+                                le « Centre Carrefour Béthanie » pour faciliter la gestion de ce lieu indépendamment de
+                                la paroisse, et pour se tourner vers la formation d'animateurs de colonies de vacances
+                                tout en devenant lui-même un centre de vacances familial, laïc et ouvert.</p>
+
+                            <p>Depuis, Le Centre s'est agrandi avec le bâtiment des Tilleuls, mais aussi modernisé pour
+                                s'adapter aux normes sanitaires et de confort d'accueil. Ses projets de rénovation ont
+                                toujours été soutenus avec bienveillance par les institutions territoriales
+                                (Municipalité, Région, CAF, Jeunesse et Sports…). Ces projets ont également bénéficié du
+                                soutien de communautés protestantes de Suisse et de Hollande, historiquement proches des
+                                Cévennes car elles ont naguère largement accueilli la diaspora huguenote qui a suivi la
+                                révocation de l'édit de Nantes.</p>
+
+                            <p>Le Centre est ouvert à tous dans le respect de la laïcité républicaine, il veille à
+                                conserver à ce lieu l'esprit et les valeurs du protestantisme qui l'animent depuis les
+                                débuts de son histoire. Il est aussi membre du réseau des Centres chrétiens de vacances
+                                et de la FEP</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Présentation -->
-            <div class="card">
-                <h3>Locations pour groupes, dans le Gard sur la commune de Bagard</h3>
-                <p>
-                    Le Centre Carrefour Béthanie est un lieu d'accueil idéal !
-                    <br><br>
-
-                    Séjours de vacances, rassemblements familiaux et associatifs, classes de découverte, séjours
-                    à thème…. Ce centre est particulièrement bien équipé pour l'accueil de groupes et des camps
-                    de jeunes et d'enfants. Il peut aussi accueillir des groupes en séminaires de formation.
-                    <br><br>
-
-                    La capacité d'hébergement totale est de 50 places réparties sur plusieurs bâtiments pouvant
-                    être loués ensemble ou séparément. Des lits d'appoint peuvent être rajoutés dans certaines
-                    chambres. Le centre dispose de chapiteaux permettant en été d'augmenter la capacité
-                    d'hébergement. Le centre n'assure pas de service de restauration, mais peut mettre les
-                    groupes en contact avec des entrepreneurs individuels qui pourront assurer ce service selon
-                    leurs besoins.
-                    <br>
-                    Les lieux sont mis à disposition en autogestion.
-                    <br><br>
-
-                    Le centre Carrefour Béthanie est situé dans le Gard sur la commune de Bagard, en bordure des
-                    Cévennes, à 9km d'Alès et 6 km d'Anduze, dans un parc arboré d'un hectare, avec des terrains
-                    de jeux et une piscine. Il est situé à quelques minutes du Gardon et de ses fraîches
-                    baignades, des vallées cévenoles et ses souvenirs historiques.
-                </p>
-            </div>
-
-            <!-- Logos -->
-            <div class="logos-section">
-                <p>Pour une date, un devis, voir la page contact</p>
-                <img src="image/logo-wifi-gratuit.png" alt="WiFi gratuit" style="width: 5%; height: auto;">
-                <img src="image/handicape logo.png" alt="Accessible PMR" style="width: 5%; height: auto;">
-                <img src="image/FPF.png" alt="FPF" style="width: 13%; height: auto;">
-                <img src="image/Logo---CCV.jpg" alt="CCV" style="width: 20%; height: auto;">
+                <div class="history-sidebar">
+                    <div class="sidebar-card">
+                        <h3>Un peu d'histoire</h3>
+                        <h4>La croix Huguenote</h4>
+                        <div class="sidebar-image">
+                            <img src="image/croix hugenotye.jpg" alt="Croix Huguenote">
+                        </div>
+                        <div class="sidebar-content">
+                            <p>La croix huguenote apparaît en Languedoc, peu après la révocation de l'Édit de Nantes.
+                                Une famille de bijoutier nîmois, les Maistre, serait la première en 1688 à en avoir
+                                réalisé en or. La mode de ce bijou féminin se répand rapidement en pays réformé.</p>
+                            <p>Après un oubli de plus d'un siècle, ce bijou connaît un regain d'intérêt grâce aux
+                                travaux des érudits et collectionneurs protestants, comme Raoul Allier, professeur à la
+                                faculté de théologie protestante de Paris, qui en possédait cent six. Avec l'ouverture
+                                du musée du Désert à Mialet (Gard) en 1911, la croix huguenote devient l'objet
+                                d'expositions et d'articles dans la Société de l'histoire du protestantisme français et
+                                suscite de nombreuses rééditions en or, en argent et en métal. La librairie générale et
+                                protestante de Paris en vend à partir de 1912. Dans l'entre-deux-guerres, la croix
+                                huguenote commence à remplacer le pendentif en forme de cœur qui était offert aux jeunes
+                                filles lors de la confirmation. Elle s'affirme depuis la Seconde Guerre mondiale, et son
+                                utilisation dans l'insigne des résistants protestants, comme le bijou protestant par
+                                essence et son usage se diffuse y compris dans les territoires luthériens. Elle est
+                                aujourd'hui portée à la fois par les hommes et les femmes.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -526,7 +537,7 @@
 
                 <div class="footer-section">
                     <h3>Liens Rapides</h3>
-                    <a href="accueil.html">Accueil</a><br>
+                    <a href="index.html">Accueil</a><br>
                     <a href="batiment.html">Nos bâtiments</a><br>
                     <a href="qui-sommes-nous.html">Qui sommes-nous</a><br>
                     <a href="tarifs.html">Nos tarifs</a><br>

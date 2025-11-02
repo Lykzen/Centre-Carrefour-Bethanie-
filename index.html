@@ -1,0 +1,2886 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre Carrefour Béthanie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="image/bethanie logo.webp">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #4E977A;
+            --secondary-color: #418B7E;
+            --light-gray: #F7F4D1;
+            --dark-gray: #062223;
+            --white: #F7F4D1;
+            --border-color: #7AB37C;
+            --shadow: 0 2px 10px rgba(6, 34, 35, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: #7AB37C;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header amélioré */
+        header {
+            background: #F7F4D1;
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            margin-right: 15px;
+            font-size: 2.5rem;
+        }
+
+        /* Navigation links améliorée */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            background: #F7F4D1;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(6, 34, 35, 0.08);
+            min-height: 50px;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-color), #418B7E);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(78, 151, 122, 0.3);
+        }
+
+        .nav-links a.active {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-color), #3A7A6E);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(78, 151, 122, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: linear-gradient(135deg, var(--primary-color), #418B7E);
+            border: none;
+            font-size: 1.8rem;
+            color: var(--white);
+            cursor: pointer;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(78, 151, 122, 0.3);
+        }
+
+        .mobile-menu-btn:hover {
+            background: linear-gradient(135deg, #418B7E, #3A7A6E);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(78, 151, 122, 0.4);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 120px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .page {
+            display: none;
+            padding: 2rem 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Home Page */
+        .hero {
+            background: linear-gradient(135deg, var(--light-gray) 0%, #E8E5C3 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: #418B7E;
+            transform: translateY(-2px);
+        }
+
+        /* Image Container */
+        .image-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .region-image-real {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .region-image-real img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid-6 {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(6, 34, 35, 0.15);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Building Cards with Carousel */
+        .building-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .building-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(6, 34, 35, 0.2);
+        }
+
+        .building-carousel {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-slide.placeholder {
+            background: linear-gradient(45deg, var(--light-gray), var(--border-color));
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(6, 34, 35, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .image-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(6, 34, 35, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: rgba(6, 34, 35, 0.8);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(6, 34, 35, 0.5);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .modal-nav:hover {
+            background: rgba(6, 34, 35, 0.8);
+        }
+
+        .modal-prev {
+            left: -80px;
+        }
+
+        .modal-next {
+            right: -80px;
+        }
+
+        .modal-info {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(247, 244, 209, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background: var(--white);
+        }
+
+        .building-info {
+            padding: 1.5rem;
+        }
+
+        .building-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .building-info p {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Tourism Cards */
+        .tourism-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tourism-card {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            min-height: 200px;
+        }
+
+        .tourism-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(6, 34, 35, 0.15);
+        }
+
+        .tourism-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .tourism-image {
+            width: 300px;
+            height: 200px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tourism-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .tourism-card:hover .tourism-image img {
+            transform: scale(1.05);
+        }
+
+        .tourism-image.placeholder {
+            background: linear-gradient(135deg, var(--light-gray), var(--border-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .tourism-content {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .tourism-content h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tourism-content h3 i {
+            font-size: 1.5rem;
+        }
+
+        .tourism-content p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .tourism-content .distance {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .pricing-hero {
+            position: relative;
+            height: 300px;
+            background: linear-gradient(135deg, #4E977A 0%, #418B7E 100%);
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .pricing-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            border-radius: 15px;
+        }
+
+        .pricing-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .pricing-hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(6, 34, 35, 0.3);
+        }
+
+        .pricing-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Pricing Table */
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .price-list {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .price-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .price-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Enhanced Contact Form */
+        .contact-simple {
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+
+        .contact-card {
+            background: var(--white);
+            max-width: 600px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(6, 34, 35, 0.1);
+            padding: 3rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(6, 34, 35, 0.15);
+        }
+
+        .contact-details h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .contact-details h3:first-child {
+            margin-top: 0;
+        }
+
+        .contact-details p {
+            color: var(--dark-gray);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* History Section Layout */
+        .history-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: fit-content;
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(6, 34, 35, 0.15);
+        }
+
+        .sidebar-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .sidebar-image {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 200px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar-content p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        .image-placeholder {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .image-placeholder img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Map Section */
+        .map-section {
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .map-embed {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #E8E5C3, #D4D1B3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            border: 2px solid var(--border-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #A8B5A8;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: #418B7E;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #2A4F4B;
+            color: #A8B5A8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .nav-links a i {
+                margin-right: 6px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                justify-content: flex-start;
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                padding: 1rem 0;
+            }
+
+            main {
+                margin-top: 100px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .grid-2,
+            .grid-3,
+            .grid-6 {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .history-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sidebar-image {
+                height: 150px;
+            }
+
+            .sidebar-content p {
+                font-size: 0.9rem;
+            }
+
+            .contact-card {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+
+            .contact-details h3 {
+                font-size: 1.3rem;
+            }
+
+            .contact-details p {
+                font-size: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-hero h2 {
+                font-size: 2rem;
+            }
+
+            .tourism-card {
+                flex-direction: column !important;
+                min-height: auto;
+            }
+
+            .tourism-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .tourism-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page.active {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .lien-sobre {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .lien-sobre:hover {
+            text-decoration: underline;
+        }
+
+        .tourism-content a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .tourism-content a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+
+
+    <style>
+        /* Hero avec image bannière */
+        .hero {
+            position: relative;
+            padding: 0;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(6, 34, 35, 0.7) 0%, rgba(78, 151, 122, 0.6) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero-content h1 {
+            color: #F7F4D1;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(6, 34, 35, 0.5);
+        }
+
+        .hero-content p {
+            color: #F7F4D1;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(6, 34, 35, 0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #4E977A;
+            color: #F7F4D1;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(6, 34, 35, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #418B7E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 34, 35, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 400px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-content {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+    <style>
+        .history-first-paragraph {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-top: 0;
+        }
+
+        .history-text-first {
+            flex: 1;
+            margin-top: 0;
+            /* Le texte reste à sa position normale */
+        }
+
+        .history-text-first p {
+            margin-top: 0;
+        }
+
+        .history-first-paragraph img {
+            flex: 0 0 40%;
+            max-width: 40%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-top: -70px;
+            /* Seule l'image remonte */
+        }
+
+        /* Version responsive pour mobile */
+        @media (max-width: 768px) {
+            .history-first-paragraph {
+                flex-direction: column;
+            }
+
+            .history-first-paragraph img {
+                max-width: 100%;
+                flex: 0 0 100%;
+                margin-top: 0;
+            }
+        }
+    </style>
+
+    <style>
+        /* ========================================
+   SECTION CONTACT - STYLE PROFESSIONNEL
+   ======================================== */
+
+        /* Grille des cartes de contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0 4rem 0;
+        }
+
+        /* Cartes de contact individuelles */
+        .contact-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(6, 34, 35, 0.1);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(78, 151, 122, 0.2);
+            border-color: var(--border-color);
+        }
+
+        /* Icônes des cartes */
+        .contact-card .icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            box-shadow: 0 5px 20px rgba(78, 151, 122, 0.3);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover .icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 30px rgba(78, 151, 122, 0.4);
+        }
+
+        /* Titres des cartes */
+        .contact-card h3 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        /* Informations de contact */
+        .contact-card .info {
+            color: var(--dark-gray);
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+
+        .contact-card .info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .contact-card .info a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        /* Section carte Google Maps */
+        .map-section {
+            margin-top: 4rem;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 8px 25px rgba(6, 34, 35, 0.1);
+        }
+
+        .map-section h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* Conteneur de la carte */
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(6, 34, 35, 0.15);
+            border: 3px solid var(--border-color);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2rem 0 3rem 0;
+            }
+
+            .contact-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-card .icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+
+            .contact-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .contact-card .info {
+                font-size: 1rem;
+            }
+
+            .map-section {
+                padding: 2rem 1.5rem;
+                margin-top: 3rem;
+            }
+
+            .map-section h3 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .map-container {
+                height: 350px;
+            }
+        }
+
+        /* Animation d'entrée pour les cartes */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-card {
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        .contact-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .contact-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .contact-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .map-section {
+            animation: slideInUp 0.6s ease forwards;
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        /* Effet de brillance au survol */
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(122, 179, 124, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+    </style>
+
+    <style>
+        /* ========================================
+   SECTION TARIFS - STYLE PROFESSIONNEL
+   ======================================== */
+
+        /* Conteneur principal de la section tarifs */
+        .tarifs-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            margin: 3rem 0;
+        }
+
+        /* Carte principale des tarifs */
+        .tarifs-card {
+            background: var(--white);
+            max-width: 700px;
+            width: 100%;
+            border-radius: 25px;
+            padding: 4rem 3rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(6, 34, 35, 0.12);
+            transition: var(--transition);
+            border: 3px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tarifs-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(122, 179, 124, 0.05) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .tarifs-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(78, 151, 122, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        /* Icône décorative en haut */
+        .tarifs-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+            box-shadow: 0 8px 25px rgba(78, 151, 122, 0.3);
+            position: relative;
+            z-index: 1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Contenu de la carte */
+        .tarifs-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tarifs-content h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .tarifs-content p {
+            color: var(--dark-gray);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Email mis en valeur */
+        .tarifs-email {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: inline-block;
+            margin: 1.5rem 0;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(78, 151, 122, 0.3);
+            transition: var(--transition);
+        }
+
+        .tarifs-email:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(78, 151, 122, 0.4);
+        }
+
+        /* Message de remerciement */
+        .tarifs-message {
+            color: var(--secondary-color);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        /* Divider décoratif */
+        .tarifs-divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 2rem auto;
+            border-radius: 2px;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .tarifs-container {
+                margin: 2rem 1rem;
+                min-height: 300px;
+            }
+
+            .tarifs-card {
+                padding: 3rem 2rem;
+                border-radius: 20px;
+            }
+
+            .tarifs-icon {
+                width: 75px;
+                height: 75px;
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .tarifs-content h2 {
+                font-size: 1.6rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .tarifs-content p {
+                font-size: 1.1rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .tarifs-email {
+                font-size: 1.1rem;
+                padding: 0.9rem 1.8rem;
+                margin: 1.2rem 0;
+            }
+
+            .tarifs-message {
+                font-size: 1.05rem;
+                margin-top: 1.5rem;
+                padding-top: 1.5rem;
+            }
+        }
+
+        /* Animation d'entrée */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tarifs-card {
+            animation: slideIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="image/bethanie logo.webp" alt="logo" style="width: 15%; height: auto; border-radius: 10px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;Centre Carrefour &nbsp;&nbsp;&nbsp;&nbsp;Béthanie
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                <li><a href="#batiment" class="nav-link">Bâtiment</a></li>
+                <li><a href="#tourisme" class="nav-link">Tourisme</a></li>
+                <li><a href="#qui-sommes-nous" class="nav-link">Qui sommes-nous</a>
+                </li>
+                <li><a href="#tarifs" class="nav-link">Tarifs</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Accueil -->
+        <section id="accueil" class="page active">
+            <div class="hero">
+                <div class="hero-image-container">
+                    <img src="image/Bethanie-1-1024x523-1.webp" alt="Centre Carrefour Béthanie" class="hero-banner">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="container hero-content">
+                    <h1>Bienvenue au Centre Carrefour Béthanie</h1>
+                    <p>Un lieu d'accueil, de partage et de convivialité dans le Gard</p>
+                    <a href="#qui-sommes-nous" class="cta-button nav-link">Découvrir notre histoire</a>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Image de la région -->
+                <div class="image-container">
+                    <h2 class="text-center mb-2">Notre Belle Région</h2>
+                    <div class="region-image-real">
+                        <img src="image/Gard_Position.png" alt="Position du Gard"
+                            style="width: 100%; height: auto; border-radius: 10px;">
+                    </div>
+
+                </div>
+
+                <!-- Présentation -->
+                <div class="grid grid-2">
+                    <div class="card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Locations pour groupes, dans le Gard sur la commune de Bagard</h3>
+                        <p>
+                            Le Centre Carrefour Béthanie est un lieu d'accueil idéal !
+                            <br><br>
+
+                            Séjours de vacances, rassemblements familiaux et associatifs, classes de découverte, séjours
+                            à thème…. Ce centre est particulièrement bien équipé pour l'accueil de groupes et des camps
+                            de jeunes et d'enfants. Il peut aussi accueillir des groupes en séminaires de formation.
+                            <br><br>
+
+                            La capacité d'hébergement totale est de 50 places réparties sur plusieurs bâtiments pouvant
+                            être loués ensemble ou séparément. Des lits d'appoint peuvent être rajoutés dans certaines
+                            chambres. Le centre dispose de chapiteaux permettant en été d'augmenter la capacité
+                            d'hébergement.Le centre n'assure pas de service de restauration, mais peut mettre les
+                            groupes en contact avec des entrepreneurs individuels qui pourront assurer ce service selon
+                            leurs besoins.
+                            <br>
+                            Les lieux sont mis à disposition en autogestion.
+                            <br><br>
+
+                            Le centre Carrefour Béthanie est situé dans le Gard sur la commune de Bagard, en bordure des
+                            Cévennes, à 9km d'Alès et 6 km d'Anduze, dans un parc arboré d'un hectare, avec des terrains
+                            de jeux et une piscine. Il est situé à quelques minutes du Gardon et de ses fraîches
+                            baignades, des vallées cévenoles et ses souvenirs historiques.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <center>
+                <p>Pour une date, un devis, voir la page contact</p>
+                <br><img src="image/logo-wifi-gratuit.png" alt="logo-wifi-gratuit"
+                    style="width: 5%; height: auto; border-radius: 10px;">
+                <img src="image/handicape logo.png" alt="logo-wifi-gratuit"
+                    style="width: 5%; height: auto; border-radius: 10px;">
+                <img src="image/FPF.png" alt="logo-wifi-gratuit" style="width: 13%; height: auto; border-radius: 10px;">
+                <img src="image/Logo---CCV.jpg" alt="logo-wifi-gratuit"
+                    style="width: 20%; height: auto; border-radius: 10px;">
+            </center>
+        </section>
+
+        <!-- Page Bâtiment -->
+        <section id="batiment" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Nos Locaux</h1>
+                    <p>Des espaces modernes et accueillants au service de la communauté</p>
+                </div>
+
+                <!-- 6 bâtiments avec carrousel -->
+                <div class="grid grid-6">
+                    <div class="building-card">
+                        <div class="building-carousel" data-building="1">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_1.jpg"
+                                        alt="Bâtiment Principal - Vue extérieure"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 1</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_2.jpg" alt="Bâtiment Principal - Entrée"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 2</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_3.jpg"
+                                        alt="Bâtiment Principal - Intérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 3</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_4.jpg"
+                                        alt="Bâtiment Principal - Intérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 3</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_5.jpg"
+                                        alt="Bâtiment Principal - Intérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 3</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_6.jpg"
+                                        alt="Bâtiment Principal - Intérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 3</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_7.jpg"
+                                        alt="Bâtiment Principal - Intérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 3</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_8.jpg"
+                                        alt="Bâtiment Principal - Intérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 3</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_9.jpg"
+                                        alt="Bâtiment Principal - Intérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 3</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_10.jpg"
+                                        alt="Bâtiment Principal - Intérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 3</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_11.jpg"
+                                        alt="Bâtiment Principal - Intérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 3</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les amandiers/les amandier_12.jpg"
+                                        alt="Bâtiment Principal - Intérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Image bâtiment principal<br>Vue 3</div>'">
+                                </div>
+                            </div>
+                            <div class="carousel-nav">
+                                <div class="carousel-dot active" data-slide="0"></div>
+                                <div class="carousel-dot" data-slide="1"></div>
+                                <div class="carousel-dot" data-slide="2"></div>
+                                <div class="carousel-dot" data-slide="3"></div>
+                                <div class="carousel-dot" data-slide="4"></div>
+                                <div class="carousel-dot" data-slide="5"></div>
+                                <div class="carousel-dot" data-slide="6"></div>
+                                <div class="carousel-dot" data-slide="7"></div>
+                                <div class="carousel-dot" data-slide="8"></div>
+                                <div class="carousel-dot" data-slide="9"></div>
+                                <div class="carousel-dot" data-slide="10"></div>
+                                <div class="carousel-dot" data-slide="11"></div>
+                            </div>
+                        </div>
+                        <div class="building-info">
+                            <h3> Les Amandiers </h3>
+                            <h4>Maxi 23 couchages</h4>
+                            <br>
+                            <p>Les Amandiers est le bâtiment le plus important du centre et peut héberger 24 personnes
+                                en lits individuels.
+                                Il se compose au rez-de-chaussée d'une grande salle de 60 m², avec salon attenant ( 25
+                                m²), d' une salle de réunion de 30 m², d'une grande cuisine moderne entièrement équipée
+                                et de toilettes ; Au second étage , de 6 chambres de 2 à 7 lits, d'une petite pièce de
+                                stockage, ainsi qu'une salle de bain collective équipée de 3 douches fermées, 3
+                                toilettes, et 3 lavabos et placard pour le rangement des produits d'entretien</p>
+                        </div>
+                    </div>
+
+                    <div class="building-card">
+                        <div class="building-carousel" data-building="2">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_1.jpg"
+                                        alt="Bâtiment Les Tilleuls - Extérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Vue 1</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_2.jpg"
+                                        alt="Bâtiment Les Tilleuls - Chambres"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Chambres</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_3.jpg"
+                                        alt="Bâtiment Les Tilleuls - Espace détente"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Détente</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_4.jpg"
+                                        alt="Bâtiment Les Tilleuls - Extérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Vue 1</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_5.jpg"
+                                        alt="Bâtiment Les Tilleuls - Extérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Vue 1</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_6.jpg"
+                                        alt="Bâtiment Les Tilleuls - Extérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Vue 1</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_7.jpg"
+                                        alt="Bâtiment Les Tilleuls - Extérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Vue 1</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_8.jpg"
+                                        alt="Bâtiment Les Tilleuls - Extérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Vue 1</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_9.jpg"
+                                        alt="Bâtiment Les Tilleuls - Extérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Vue 1</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_10.jpg"
+                                        alt="Bâtiment Les Tilleuls - Extérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Vue 1</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_11.jpg"
+                                        alt="Bâtiment Les Tilleuls - Extérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Vue 1</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les tilleuls/les tilleuls_12.jpg"
+                                        alt="Bâtiment Les Tilleuls - Extérieur"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Bâtiment Les Tilleuls<br>Vue 1</div>'">
+                                </div>
+                            </div>
+                            <div class="carousel-nav">
+                                <div class="carousel-dot active" data-slide="0"></div>
+                                <div class="carousel-dot" data-slide="1"></div>
+                                <div class="carousel-dot" data-slide="2"></div>
+                                <div class="carousel-dot" data-slide="3"></div>
+                                <div class="carousel-dot" data-slide="4"></div>
+                                <div class="carousel-dot" data-slide="5"></div>
+                                <div class="carousel-dot" data-slide="6"></div>
+                                <div class="carousel-dot" data-slide="7"></div>
+                                <div class="carousel-dot" data-slide="8"></div>
+                                <div class="carousel-dot" data-slide="9"></div>
+                                <div class="carousel-dot" data-slide="10"></div>
+                                <div class="carousel-dot" data-slide="11"></div>
+                            </div>
+                        </div>
+                        <div class="building-info">
+                            <h3>Les Tilleuls</h3>
+                            <h4> Maxi 12 couchages</h4>
+                            <br>
+                            <p>Ce bâtiment est le plus récent des gîtes du Centre Carrefour Béthanie. Il peut héberger
+                                12 personnes et se compose de 3 chambres indépendantes, chacune avec sa salle de bain
+                                individuelle. Il dispose d'une cuisine équipée ouverte sur une salle de réunion
+                                permettant de recevoir une vingtaine de personnes. Le bâtiment est accessible aux
+                                personnes à mobilité réduite.</p>
+                        </div>
+                    </div>
+
+                    <div class="building-card">
+                        <div class="building-carousel" data-building="3">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="image/les lauriers/les lauriers_1.jpg"
+                                        alt="Le bâtiment « Les Lauriers » est exclusivement destiné au couchage"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Salle Polyvalente<br>Vue générale</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les lauriers/les lauriers_2.jpg"
+                                        alt="Le bâtiment « Les Lauriers » est exclusivement destiné au couchage"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Salle Polyvalente<br>Vue générale</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les lauriers/les lauriers_3.jpg"
+                                        alt="Le bâtiment « Les Lauriers » est exclusivement destiné au couchage"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Salle Polyvalente<br>Vue générale</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les lauriers/les lauriers_4.jpg"
+                                        alt="Le bâtiment « Les Lauriers » est exclusivement destiné au couchage"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Salle Polyvalente<br>Vue générale</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les lauriers/les lauriers_5.jpg"
+                                        alt="Le bâtiment « Les Lauriers » est exclusivement destiné au couchage"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Salle Polyvalente<br>Vue générale</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les lauriers/les lauriers_6.jpg"
+                                        alt="Le bâtiment « Les Lauriers » est exclusivement destiné au couchage"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Salle Polyvalente<br>Vue générale</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les lauriers/les lauriers_7.jpg"
+                                        alt="Le bâtiment « Les Lauriers » est exclusivement destiné au couchage"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Salle Polyvalente<br>Vue générale</div>'">
+                                </div>
+                            </div>
+                            <div class="carousel-nav">
+                                <div class="carousel-dot active" data-slide="0"></div>
+                                <div class="carousel-dot" data-slide="1"></div>
+                                <div class="carousel-dot" data-slide="2"></div>
+                                <div class="carousel-dot" data-slide="3"></div>
+                                <div class="carousel-dot" data-slide="4"></div>
+                                <div class="carousel-dot" data-slide="5"></div>
+                                <div class="carousel-dot" data-slide="6"></div>
+                            </div>
+                        </div>
+                        <div class="building-info">
+                            <h3>Les Lauriers</h3>
+                            <h4> Maxi 12 couchages</h4>
+                            <br>
+                            <p>Le bâtiment « Les Lauriers » est exclusivement destiné au couchage, et se compose de 3
+                                chambres indépendantes, chacune avec sa salle de bain-toilettes individuelle, de 2 à 6
+                                lits chacune. Il peut servir d'annexe au bâtiment des Amandiers ou au bâtiment les
+                                Tilleuls. Une chambre est équipée pour recevoir des personnes à mobilité réduite.</p>
+                        </div>
+                    </div>
+
+                    <div class="building-card">
+                        <div class="building-carousel" data-building="4">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="image/les oliviers/les oliviers_1.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Chapiteaux d\'été<br>Vue extérieure</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les oliviers/les oliviers_2.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Chapiteaux d\'été<br>Vue extérieure</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les oliviers/les oliviers_3.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Chapiteaux d\'été<br>Vue extérieure</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les oliviers/les oliviers_4.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Chapiteaux d\'été<br>Vue extérieure</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les oliviers/les oliviers_5.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Chapiteaux d\'été<br>Vue extérieure</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les oliviers/les oliviers_6.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Chapiteaux d\'été<br>Vue extérieure</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les oliviers/les oliviers_7.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Chapiteaux d\'été<br>Vue extérieure</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les oliviers/les oliviers_8.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Chapiteaux d\'été<br>Vue extérieure</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les oliviers/les oliviers_8.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Chapiteaux d\'été<br>Vue extérieure</div>'">
+                                </div>
+                            </div>
+                            <div class="carousel-nav">
+                                <div class="carousel-dot active" data-slide="0"></div>
+                                <div class="carousel-dot" data-slide="1"></div>
+                                <div class="carousel-dot" data-slide="2"></div>
+                                <div class="carousel-dot" data-slide="3"></div>
+                                <div class="carousel-dot" data-slide="4"></div>
+                                <div class="carousel-dot" data-slide="5"></div>
+                                <div class="carousel-dot" data-slide="6"></div>
+                                <div class="carousel-dot" data-slide="7"></div>
+                            </div>
+                        </div>
+                        <div class="building-info">
+                            <h3>Les Oliviers</h3>
+                            <h4> Maxi 60 personnes </h4>
+                            <br>
+                            <p>Hébergement supplémentaire saisonnier avec 15 places. Parfait pour les camps d'été et
+                                séjours de jeunes en pleine nature.</p>
+                        </div>
+                    </div>
+
+                    <div class="building-card">
+                        <div class="building-carousel" data-building="5">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="image/les roses/les roses_1.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Piscine<br>du centre</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les roses/les roses_2.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Piscine<br>du centre</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les roses/les roses_3.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Piscine<br>du centre</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les roses/les roses_4.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Piscine<br>du centre</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les roses/les roses_5.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Piscine<br>du centre</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les roses/les roses_6.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Piscine<br>du centre</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les roses/les roses_7.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Piscine<br>du centre</div>'">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="image/les roses/les roses_8.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Piscine<br>du centre</div>'">
+                                </div>
+                            </div>
+                            <div class="carousel-nav">
+                                <div class="carousel-dot active" data-slide="0"></div>
+                                <div class="carousel-dot" data-slide="1"></div>
+                                <div class="carousel-dot" data-slide="2"></div>
+                                <div class="carousel-dot" data-slide="3"></div>
+                                <div class="carousel-dot" data-slide="4"></div>
+                                <div class="carousel-dot" data-slide="5"></div>
+                                <div class="carousel-dot" data-slide="6"></div>
+                                <div class="carousel-dot" data-slide="7"></div>
+                            </div>
+                        </div>
+                        <div class="building-info">
+                            <h3>Les Roses</h3>
+                            <h4> 3 à 4 personnes</h4>
+                            <br>
+                            <p>Constitué d'une grande chambre avec lit double, avec sa salle de bain et sa cuisine, ce
+                                bâtiment peut recevoir une famille avec un ou deux enfants.</p>
+                        </div>
+                    </div>
+
+                    <div class="building-card">
+                        <div class="building-carousel" data-building="6">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="image/logement d appoint/logement_1.jpg"
+                                        onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>Salle<br>de réunion</div>'">
+                                </div>
+                            </div>
+                            <div class="carousel-nav">
+                                <div class="carousel-dot active" data-slide="0"></div>
+                            </div>
+                        </div>
+                        <div class="building-info">
+                            <h3>Logement d'appoint</h3>
+                            <h4> Maxi 32 couchages</h4>
+                            <br>
+                            <p>En été, ces logements offrent une capacité d'hébergement supplémentaire en tentes
+                                marabouts équipées de 32 couchettes montées sur sol en dur, un ensemble de douches et
+                                toilettes WC est situé à proximité.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Tourisme -->
+        <section id="tourisme" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Découvrir le Gard</h1>
+                    <p>Un patrimoine riche entre histoire, nature et traditions</p>
+                </div>
+
+                <!-- Attractions touristiques en format vertical -->
+                <div class="tourism-cards">
+                    <div class="tourism-card">
+                        <div class="tourism-image">
+                            <img src="image/pont-du-gard.jpg" alt="Pont du Gard"
+                                onerror="this.parentElement.className='tourism-image placeholder'; this.parentElement.innerHTML='Image du<br>Pont du Gard';">
+                        </div>
+                        <div class="tourism-content">
+                            <h3>
+                                <i class="fas fa-monument"></i>
+                                <a href="https://pontdugard.fr/fr" target="_blank" rel="noopener noreferrer"
+                                    class="lien-sobre">
+                                    Pont du Gard
+                                </a>
+                            </h3>
+
+                            <style>
+                                .lien-sobre {
+                                    text-decoration: none;
+                                    /* enlève le trait dessous */
+                                    color: inherit;
+                                    /* garde la couleur du texte parent (ici du <h3>) */
+                                }
+
+                                .lien-sobre:hover {
+                                    text-decoration: underline;
+                                    /* optionnel : petit effet au survol */
+                                }
+                            </style>
+
+                            <p>Le Site du Pont du Gard est ouvert au public toute l'année. Il est accessible 7 jours
+                                sur
+                                7 avec des horaires variables en fonction des saisons. Le Musée est fermé pour
+                                maintenance tous les lundis matin.</p>
+                        </div>
+                    </div>
+
+                    <div class="tourism-card">
+                        <div class="tourism-image">
+                            <img src="image/bambouseraie.jpg" alt="bambouseraie"
+                                onerror="this.parentElement.className='tourism-image placeholder'; this.parentElement.innerHTML='Amphithéâtre<br>de Nîmes';">
+                        </div>
+                        <div class="tourism-content">
+                            <h3>
+                                <i class="fa-solid fa-tree"></i>
+                                <a href="https://bambouseraie.fr" target="_blank" rel="noopener noreferrer"
+                                    class="lien-sobre">
+                                    LA BAMBOUSERAIE
+                                </a>
+                            </h3>
+
+                            <style>
+                                .lien-sobre {
+                                    text-decoration: none;
+                                    /* enlève le trait dessous */
+                                    color: inherit;
+                                    /* garde la couleur du texte parent (ici du <h3>) */
+                                }
+
+                                .lien-sobre:hover {
+                                    text-decoration: underline;
+                                    /* optionnel : petit effet au survol */
+                                }
+                            </style>
+
+                            <p>À seulement 5 minutes d'Anduze, la Bambouseraie vous accueille dans un espace hors du
+                                temps, à découvrir, ou redécouvrir.
+                                <br>
+                                552 RUE DE MONTSAUVE
+                                <br>
+                                30140 GÉNÉRARGUES – FRANCE
+                                <br>
+                                TÉL : 04 66 61 70 47
+                                <br>
+                                E-MAIL : BAMBOU@BAMBOUSERAIE.FR
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tourism-card">
+                        <div class="tourism-image">
+                            <img src="image/train anduze.webp" alt="train a Vapeur"
+                                onerror="this.parentElement.className='tourism-image placeholder'; this.parentElement.innerHTML='Parc National<br>des Cévennes';">
+                        </div>
+                        <div class="tourism-content">
+                            <h3>
+                                <i class="fa-solid fa-train"></i>
+                                <a href="https://www.trainavapeur.com" target="_blank" rel="noopener noreferrer"
+                                    class="lien-sobre">
+                                    Train à Vapeur des Cévennes
+                                </a>
+                            </h3>
+
+                            <style>
+                                .lien-sobre {
+                                    text-decoration: none;
+                                    /* enlève le trait dessous */
+                                    color: inherit;
+                                    /* garde la couleur du texte parent (ici du <h3>) */
+                                }
+
+                                .lien-sobre:hover {
+                                    text-decoration: underline;
+                                    /* optionnel : petit effet au survol */
+                                }
+                            </style>
+
+                            <p>OUVERTURE
+                                <br>
+                                Du 10/04/2022 au 31/10/2022
+                                <br><br>
+
+                                38 Place de la Gare 30140 ANDUZE
+                                <br>
+                                TEL : 04 66 60 59 00
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tourism-card">
+                        <div class="tourism-image">
+                            <img src="image/observatoir mt egoale.jpg" alt="observatoire"
+                                onerror="this.parentElement.className='tourism-image placeholder'; this.parentElement.innerHTML='Réserve Naturelle<br>de Camargue';">
+                        </div>
+                        <div class="tourism-content">
+                            <h3>
+                                <a href="https://climatographe.fr" target="_blank" rel="noopener noreferrer"
+                                    class="lien-sobre">
+                                    Observatoire météo du Mont Aigoual
+                                </a>
+                            </h3>
+
+                            <style>
+                                .lien-sobre {
+                                    text-decoration: none;
+                                    /* enlève le trait dessous */
+                                    color: inherit;
+                                    /* garde la couleur du texte parent (ici du <h3>) */
+                                }
+
+                                .lien-sobre:hover {
+                                    text-decoration: underline;
+                                    /* optionnel : petit effet au survol */
+                                }
+                            </style>
+
+                            <p>Météosite Mont Aigoual
+                                <br>
+                                30570 Valleraugue
+                                <br><br>
+
+                                TEL : 04 67 42 59 83 / 04 30 05 16 80
+                                <br>
+                                Télécopieur : 04 67 82 65 05
+                                <br><br>
+
+                                Courriel : meteosite@aigoual.fr / aigoual@meteo.fr
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tourism-card">
+                        <div class="tourism-image">
+                            <img src="image/grotte.jpg" alt="grotte"
+                                onerror="this.parentElement.className='tourism-image placeholder'; this.parentElement.innerHTML='Gorges<br>du Gardon';">
+                        </div>
+                        <div class="tourism-content">
+                            <h3><i class="fas fa-mountain"></i> Les grottes des environs</h3>
+                            <p>
+                                <a href="https://www.demoiselles.com/fr" target="_blank" rel="noopener noreferrer">La
+                                    grotte des demoiselles</a><br>
+                                <a href="https://www.grotte-cocaliere.com" target="_blank"
+                                    rel="noopener noreferrer">Grotte La Cocalière</a><br>
+                                <a href="https://grotte-de-trabuc.com" target="_blank" rel="noopener noreferrer">Grotte
+                                    de Trabuc</a><br>
+                                <a href="https://www.grottedelasalamandre.com/fr" target="_blank"
+                                    rel="noopener noreferrer">Grotte de la Salamandre</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <style>
+                        .tourism-content a {
+                            text-decoration: none;
+                            /* enlève le soulignement */
+                            color: inherit;
+                            /* garde la couleur du texte normal */
+                        }
+
+                        .tourism-content a:hover {
+                            text-decoration: underline;
+                            /* optionnel si tu veux un effet au survol */
+                        }
+                    </style>
+
+                </div>
+            </div>
+
+
+            </div>
+            </div>
+            </div>
+        </section>
+
+
+        <!-- Page Qui sommes-nous -->
+        <section id="qui-sommes-nous" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Qui Sommes-Nous</h1>
+                    <p>Une histoire d'engagement et de service depuis plus d'un siècle</p>
+                </div>
+
+                <!-- Histoire et section complémentaire -->
+                <div class="history-section">
+                    <div class="history-main">
+                        <div class="card">
+                            <h3>Notre Histoire</h3>
+
+                            <!-- Premier paragraphe avec image -->
+                            <div class="history-first-paragraph">
+                                <div class="history-text-first">
+                                    <p>L'ensemble appelé « Béthanie » a été créé à la fin du XIX e siècle, en 1891 par
+                                        le
+                                        pasteur
+                                        Guillaume Granier Soucieux de la mission sociale de l'Eglise, il voulut avec son
+                                        épouse
+                                        créer
+                                        "un lieu où chacun pourrait trouver de quoi se distraire, se cultiver,
+                                        s'épanouir". Sans
+                                        héritiers, ils léguèrent cette propriété à la communauté protestante de Bagard
+                                        et
+                                        Boisset.
+                                    </p>
+                                </div>
+
+                                <img src="image/personnage-dessin-anime-enfant-enfant-colore-fond_884500-18397.jpg"
+                                    alt="personnage " style="width: 70%; height: auto; border-radius: 10px;">
+                            </div>
+
+                            <br>
+
+                            <!-- Paragraphes suivants en pleine largeur -->
+                            <div class="history-rest">
+                                <p>Après la guerre de 1914-1918, Béthanie rassemblait la jeunesse des villages de
+                                    Boisset
+                                    et Bagard
+                                    pour des activités très éclectiques : sport, jeux, formation biblique et
+                                    spirituelle,
+                                    activités
+                                    culturelles.. Suite à des échanges avec la « Grande Île », il paraît même qu'à
+                                    Madagascar on
+                                    parlait de Béthanie ! Il y avait des conférences et c'est là qu'ont eu lieu les
+                                    premières
+                                    "projections lumineuses" du secteur, ancêtre du cinéma.
+                                </p>
+                                <br>
+
+                                <p>Par tradition Béthanie a toujours été un lieu ouvert à tous. En 1942, la meute de
+                                    louveteaux
+                                    était constituée pour moitié des enfants juifs du Foyer Marie Claire de Boisset, par
+                                    exemple.
+                                </p>
+                                <br>
+
+                                <p>C'est dans les années 1970, que le pasteur Gaussorgues a créé une association loi
+                                    1901,
+                                    le «
+                                    Centre Carrefour Béthanie » pour faciliter la gestion de ce lieu indépendamment de
+                                    la
+                                    paroisse,
+                                    et pour se tourner vers la formation d'animateurs de colonies de vacances tout en
+                                    devenant
+                                    lui-même un centre de vacances familial, laïc et ouvert.
+                                </p>
+                                <br>
+
+                                <p>Depuis, Le Centre s'est agrandi avec le bâtiment des Tilleuls, mais aussi modernisé
+                                    pour
+                                    s'adapter aux normes sanitaires et de confort d'accueil. Ses projets de rénovation
+                                    ont
+                                    toujours
+                                    été soutenus avec bienveillance par les institutions territoriales (Municipalité,
+                                    Région, CAF,
+                                    Jeunesse et Sports…). Ces projets ont également bénéficié du soutien de communautés
+                                    protestantes
+                                    de Suisse et de Hollande, historiquement proches des Cévennes car elles ont naguère
+                                    largement
+                                    accueilli la diaspora huguenote qui a suivi la révocation de l'édit de Nantes.
+                                </p>
+                                <br>
+
+                                <p>Le Centre est ouvert à tous dans le respect de la laïcité républicaine, il veille à
+                                    conserver à
+                                    ce lieu l'esprit et les valeurs du protestantisme qui l'animent depuis les débuts de
+                                    son
+                                    histoire. Il est aussi membre du réseau des Centres chrétiens de vacances et de la
+                                    FEP
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="history-sidebar">
+                        <div class="sidebar-card">
+                            <h3>Un peu d'histoire</h3>
+                            <center>
+                                <h4>La croix Huguenote</h4>
+                            </center>
+                            <br>
+                            <div class="sidebar-image">
+                                <img src="image/croix hugenotye.jpg" alt="Nos valeurs"
+                                    style="width: 50%; height: auto; border-radius: 8px;">
+                            </div>
+                            <div class="sidebar-content">
+                                <p>
+                                    La croix huguenote apparaît en Languedoc, peu après la révocation de l'Édit de
+                                    Nantes. Une famille de bijoutier nîmois, les Maistre, serait la première en 1688 à
+                                    en avoir réalisé en or. La mode de ce bijou féminin se répand rapidement en pays
+                                    réformé.
+                                    Après un oubli de plus d'un siècle, ce bijou connaît un regain d'intérêt grâce aux
+                                    travaux des érudits et collectionneurs protestants, comme Raoul Allier, professeur à
+                                    la faculté de théologie protestante de Paris, qui en possédait cent six. Avec
+                                    l'ouverture du musée du Désert à Mialet (Gard) en 1911, la croix huguenote devient
+                                    l'objet d'expositions et d'articles dans la Société de l'histoire du protestantisme
+                                    français et suscite de nombreuses rééditions en or, en argent et en métal. La
+                                    librairie générale et protestante de Paris en vend à partir de 1912. Dans
+                                    l'entre-deux-guerres, la croix huguenote commence à remplacer le pendentif en forme
+                                    de cœur qui était offert aux jeunes filles lors de la confirmation. Elle s'affirme
+                                    depuis la Seconde Guerre mondiale, et son utilisation dans l'insigne des résistants
+                                    protestants, comme le bijou protestant par essence et son usage se diffuse y compris
+                                    dans les territoires luthériens. Elle est aujourd'hui portée à la fois par les
+                                    hommes et les femmes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- Page Tarifs -->
+        <section id="tarifs" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Nos Tarifs</h1>
+                    <p>Consultez nos tarifs et disponibilités</p>
+                </div>
+
+                <div class="tarifs-container">
+                    <div class="tarifs-card">
+                        <div class="tarifs-content">
+                            <h2>Demande de Tarifs</h2>
+
+                            <p>Pour vos demandes de tarifs, n'hésitez pas à nous contacter :</p>
+
+                            <a class="tarifs-email">
+                                carrefour.bethanie@gmail.com
+                            </a>
+
+                            <div class="tarifs-divider"></div>
+
+                            <p>Nous vous répondrons le plus rapidement possible.</p>
+
+                            <div class="tarifs-message">
+                                Merci et à bientôt !
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Contact -->
+        <section id="contact" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Nous Contacter</h1>
+                    <p>Nous sommes à votre écoute pour tous vos projets</p>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Email Card -->
+                    <div class="contact-card">
+                        <div class="icon">📧</div>
+                        <h3>E-mail</h3>
+                        <div class="info">
+                            <a href="mailto:carrefour.bethanie@gmail.com">carrefour.bethanie@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <div class="contact-card">
+                        <div class="icon">📞</div>
+                        <h3>Téléphone</h3>
+                        <div class="info">
+                            <a href="tel:0466607174">04 66 60 71 74</a>
+                            <br>
+                            <a href="tel:0659892345">06 59 89 23 45</a>
+                        </div>
+                    </div>
+
+                    <!-- Address Card -->
+                    <div class="contact-card">
+                        <div class="icon">📍</div>
+                        <h3>Adresse</h3>
+                        <div class="info">
+                            1538 route du Mas Miger<br>
+                            30140 Bagard
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="map-section">
+                    <h3>Nous Trouver</h3>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.8!2d4.0538!3d44.0601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b5679c3b2d1f8d%3A0x0!2s1538%20Route%20du%20Mas%20Miger%2C%2030140%20Bagard!5e0!3m2!1sfr!2sfr!4v1234567890"
+                            allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Centre Carrefour Béthanie</h3>
+                    <p>Une communauté engagée au service de tous depuis 1891. Venez nous rencontrer et découvrir nos
+                        activités.</p>
+
+                </div>
+
+                <div class="footer-section">
+                    <h3>Liens Rapides</h3>
+                    <a href="#accueil" class="nav-link">Accueil</a><br>
+                    <a href="#batiment" class="nav-link">Nos bâtiments</a><br>
+                    <a href="#qui-sommes-nous" class="nav-link">Qui sommes-nous</a><br>
+                    <a href="#tarifs" class="nav-link">Nos tarifs</a><br>
+                    <a href="#contact" class="nav-link">Contact</a><br>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Informations Pratiques</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 1538 route du Mas Miger<br>30140 Bagard</p>
+                    <p><i class="fas fa-phone"></i> 04 66 60 71 74</p>
+                    <p><i class="fas fa-mobile-alt"></i> 06 59 89 23 45</p>
+                    <p><i class="fas fa-envelope"></i> carrefour.bethanie@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Lun-Ven: 9h-17h</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Centre Carrefour Béthanie. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal pour les images -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <button class="modal-nav modal-prev">&#10094;</button>
+            <img class="modal-image" src="" alt="">
+            <button class="modal-nav modal-next">&#10095;</button>
+            <div class="modal-info"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Éléments principaux
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinksContainer = document.querySelector('.nav-links');
+
+            // Modal pour les images
+            const modal = document.getElementById('imageModal');
+            const modalImg = modal.querySelector('.modal-image');
+            const modalClose = modal.querySelector('.modal-close');
+            const modalPrev = modal.querySelector('.modal-prev');
+            const modalNext = modal.querySelector('.modal-next');
+            const modalInfo = modal.querySelector('.modal-info');
+
+            let currentBuilding = null;
+            let currentSlideIndex = 0;
+
+            // Données des bâtiments
+            const buildings = {
+                '1': {
+                    name: 'Les Amandiers',
+                    images: [
+                        { src: 'image/les amandiers/les amandier_1.jpg', alt: 'Les Amandiers - Vue extérieure' },
+                        { src: 'image/les amandiers/les amandier_2.jpg', alt: 'Les Amandiers - Vue extérieure' },
+                        { src: 'image/les amandiers/les amandier_3.jpg', alt: 'Les Amandiers - Vue extérieure' },
+                        { src: 'image/les amandiers/les amandier_4.jpg', alt: 'Les Amandiers - Vue extérieure' },
+                        { src: 'image/les amandiers/les amandier_5.jpg', alt: 'Les Amandiers - Vue extérieure' },
+                        { src: 'image/les amandiers/les amandier_6.jpg', alt: 'Les Amandiers - Vue extérieure' },
+                        { src: 'image/les amandiers/les amandier_7.jpg', alt: 'Les Amandiers - Vue extérieure' },
+                        { src: 'image/les amandiers/les amandier_8.jpg', alt: 'Les Amandiers - Vue extérieure' },
+                        { src: 'image/les amandiers/les amandier_9.jpg', alt: 'Les Amandiers - Vue extérieure' },
+                        { src: 'image/les amandiers/les amandier_10.jpg', alt: 'Les Amandiers - Vue extérieure' },
+                        { src: 'image/les amandiers/les amandier_11.jpg', alt: 'Les Amandiers - Vue extérieure' },
+                        { src: 'image/les amandiers/les amandier_12.jpg', alt: 'Les Amandiers - Vue extérieure' },
+
+                    ]
+                },
+                '2': {
+                    name: 'Les Tilleuls',
+                    images: [
+                        { src: 'image/les tilleuls/les tilleuls_1.jpg' },
+                        { src: 'image/les tilleuls/les tilleuls_2.jpg' },
+                        { src: 'image/les tilleuls/les tilleuls_3.jpg' },
+                        { src: 'image/les tilleuls/les tilleuls_4.jpg' },
+                        { src: 'image/les tilleuls/les tilleuls_5.jpg' },
+                        { src: 'image/les tilleuls/les tilleuls_6.jpg' },
+                        { src: 'image/les tilleuls/les tilleuls_7.jpg' },
+                        { src: 'image/les tilleuls/les tilleuls_8.jpg' },
+                        { src: 'image/les tilleuls/les tilleuls_9.jpg' },
+                        { src: 'image/les tilleuls/les tilleuls_10.jpg' },
+                        { src: 'image/les tilleuls/les tilleuls_11.jpg' },
+                        { src: 'image/les tilleuls/les tilleuls_12.jpg' },
+                    ]
+                },
+                '3': {
+                    name: 'Les Lauriers',
+                    images: [
+                        { src: 'image/les lauriers/les lauriers_1.jpg' },
+                        { src: 'image/les lauriers/les lauriers_2.jpg' },
+                        { src: 'image/les lauriers/les lauriers_3.jpg' },
+                        { src: 'image/les lauriers/les lauriers_4.jpg' },
+                        { src: 'image/les lauriers/les lauriers_5.jpg' },
+                        { src: 'image/les lauriers/les lauriers_6.jpg' },
+                        { src: 'image/les lauriers/les lauriers_7.jpg' },
+
+                    ]
+                },
+                '4': {
+                    name: 'Les Oliviers',
+                    images: [
+                        { src: 'image/les oliviers/les oliviers_1.jpg' },
+                        { src: 'image/les oliviers/les oliviers_2.jpg' },
+                        { src: 'image/les oliviers/les oliviers_3.jpg' },
+                        { src: 'image/les oliviers/les oliviers_4.jpg' },
+                        { src: 'image/les oliviers/les oliviers_5.jpg' },
+                        { src: 'image/les oliviers/les oliviers_6.jpg' },
+                        { src: 'image/les oliviers/les oliviers_7.jpg' },
+                        { src: 'image/les oliviers/les oliviers_8.jpg' },
+                        { src: 'image/les oliviers/les oliviers_9.jpg' },
+
+                    ]
+                },
+                '5': {
+                    name: 'Les Roses',
+                    images: [
+                        { src: 'image/les roses/les roses_1.jpg' },
+                        { src: 'image/les roses/les roses_2.jpg' },
+                        { src: 'image/les roses/les roses_3.jpg' },
+                        { src: 'image/les roses/les roses_4.jpg' },
+                        { src: 'image/les roses/les roses_5.jpg' },
+                        { src: 'image/les roses/les roses_6.jpg' },
+                        { src: 'image/les roses/les roses_7.jpg' },
+                        { src: 'image/les roses/les roses_8.jpg' },
+
+                    ]
+                },
+                '6': {
+                    name: 'Logement d\'appoint',
+                    images: [
+                        { src: 'image/logement d appoint/logement_1.jpg', alt: 'Logement d\'appoint' },
+
+                    ]
+                }
+            };
+
+            // Navigation entre les pages
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Mise à jour des classes actives
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    pages.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Afficher la page correspondante
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetPage = document.getElementById(targetId);
+                    if (targetPage) {
+                        targetPage.classList.add('active');
+                    }
+
+                    // Fermer le menu mobile
+                    navLinksContainer.classList.remove('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+            // Menu mobile
+            mobileMenuBtn.addEventListener('click', function () {
+                navLinksContainer.classList.toggle('active');
+            });
+
+            // Fermer le menu mobile en cliquant à l'extérieur
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('nav')) {
+                    navLinksContainer.classList.remove('active');
+                }
+            });
+
+            // Fonctions pour le modal d'images
+            function openModal(buildingId, slideIndex) {
+                currentBuilding = buildingId;
+                currentSlideIndex = slideIndex;
+                const building = buildings[buildingId];
+                const image = building.images[slideIndex];
+
+                modalImg.src = image.src;
+                modalImg.alt = image.alt;
+                modalInfo.textContent = `${building.name} - ${slideIndex + 1}/${building.images.length}`;
+
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+
+            function showNextImage() {
+                const building = buildings[currentBuilding];
+                currentSlideIndex = (currentSlideIndex + 1) % building.images.length;
+                const image = building.images[currentSlideIndex];
+
+                modalImg.src = image.src;
+                modalImg.alt = image.alt;
+                modalInfo.textContent = `${building.name} - ${currentSlideIndex + 1}/${building.images.length}`;
+            }
+
+            function showPrevImage() {
+                const building = buildings[currentBuilding];
+                currentSlideIndex = currentSlideIndex === 0 ? building.images.length - 1 : currentSlideIndex - 1;
+                const image = building.images[currentSlideIndex];
+
+                modalImg.src = image.src;
+                modalImg.alt = image.alt;
+                modalInfo.textContent = `${building.name} - ${currentSlideIndex + 1}/${building.images.length}`;
+            }
+
+            // Événements du modal
+            modalClose.addEventListener('click', closeModal);
+            modalNext.addEventListener('click', showNextImage);
+            modalPrev.addEventListener('click', showPrevImage);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('show')) return;
+
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') showPrevImage();
+                if (e.key === 'ArrowRight') showNextImage();
+            });
+
+            // Carrousel des bâtiments
+            const carousels = document.querySelectorAll('.building-carousel');
+            carousels.forEach(carousel => {
+                const track = carousel.querySelector('.carousel-track');
+                const dots = carousel.querySelectorAll('.carousel-dot');
+                let currentSlide = 0;
+                let interval;
+
+                function showSlide(index) {
+                    track.style.transform = `translateX(-${index * 100}%)`;
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
+                    currentSlide = index;
+                }
+
+                function nextSlide() {
+                    const nextIndex = (currentSlide + 1) % dots.length;
+                    showSlide(nextIndex);
+                }
+
+                function startAutoplay() {
+                    interval = setInterval(nextSlide, 4000);
+                }
+
+                function stopAutoplay() {
+                    clearInterval(interval);
+                }
+
+                // Navigation par points
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        showSlide(index);
+                        stopAutoplay();
+                        startAutoplay();
+                    });
+                });
+
+                // Clic sur les images pour ouvrir le modal
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                slides.forEach((slide, index) => {
+                    slide.addEventListener('click', () => {
+                        const buildingId = carousel.dataset.building;
+                        openModal(buildingId, index);
+                    });
+                });
+
+                // Auto-play avec pause au survol
+                startAutoplay();
+                carousel.addEventListener('mouseenter', stopAutoplay);
+                carousel.addEventListener('mouseleave', startAutoplay);
+
+                // Support tactile pour mobile
+                let startX = 0;
+                let isDragging = false;
+
+                carousel.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                    stopAutoplay();
+                });
+
+                carousel.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                });
+
+                carousel.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+
+                    const endX = e.changedTouches[0].clientX;
+                    const diffX = startX - endX;
+                    const threshold = 50;
+
+                    if (Math.abs(diffX) > threshold) {
+                        if (diffX > 0 && currentSlide < dots.length - 1) {
+                            showSlide(currentSlide + 1);
+                        } else if (diffX < 0 && currentSlide > 0) {
+                            showSlide(currentSlide - 1);
+                        }
+                    }
+                    startAutoplay();
+                });
+            });
+
+            // Masquer/afficher le header au scroll
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', function () {
+                const scrollTop = window.pageYOffset;
+                const header = document.querySelector('header');
+
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+                lastScrollTop = scrollTop;
+            });
+
+            // Animation d'apparition des éléments
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observer les cartes pour l'animation
+            document.querySelectorAll('.card, .building-card, .tourism-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Animation de chargement de la page
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+
+            // Année dynamique dans le footer
+            const currentYear = new Date().getFullYear();
+            const yearElement = document.querySelector('.footer-bottom p');
+            if (yearElement && currentYear !== 2025) {
+                yearElement.innerHTML = yearElement.innerHTML.replace('2025', currentYear);
+            }
+        });
+    </script>
+</body>
+
+</html>
